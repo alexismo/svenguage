@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/paper_texture"
+    tools:context=".InterviewActivity" >
+
+    <TextView
+        android:id="@+id/inSwedenToLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="I'm in Sweden to…"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/textAppearanceLargeLight" />
+
+    <Spinner
+        android:id="@+id/inSwedenToSpin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inSwedenToLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+    
+    <TextView
+        android:id="@+id/swedishLevelLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inSwedenToSpin"
+        android:text="My current level of Swedish is…"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/textAppearanceLargeLight" />
+
+    <Spinner
+        android:id="@+id/swedishLevelSpin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/swedishLevelLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+    
+    <LinearLayout
+        android:id="@+id/disclaimer"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/swedishLevelSpin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/info_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_margin="12dp"
+            android:src="@drawable/info_i" />
+
+        <TextView android:id="@+id/disclaimerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/textAppearanceLargeLight"
+            android:text="This information helps us tailor the best possible Swedish course for you." />
+        
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/continueBtn"
+        style="@style/svenguageBlueButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        
+        android:text="Continue >>" />
+        
+
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="actionBarYellow">#f1e178</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="swedenBlue">#005293</color>
+    <color name="svenguageGrey">#5b5b5b</color>
+    <color name="slidingMenuLabel">#f3f3f3</color>
+    <color name="slidingMenuGrey">#303030</color>
+    <color name="slidingMenuSep">#1e1e1e</color>
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="in_sweden_to_array">
+        <item>Study</item>
+        <item>Work</item>
+        <item>Vacation</item>
+        <item>Other</item>
+    </string-array>
+    
+    <string-array name="swedish_level_array">
+        <item>Totally new at this</item>
+        <item>I know a bit</item>
+        <item>I\'m okay</item>
+        <item>I\'m conversational</item>
+        <item>I\'m pretty good</item>
+        <item>--I\'m not sure--</item>
+    </string-array>
+</resources>
