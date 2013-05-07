@@ -14,8 +14,8 @@ import android.view.Menu;
 
 public class FrameActivity extends Activity {
 
-	private Fragment mContent;
-	protected Fragment mFrag;
+	private Fragment mFeedFragment;
+	private Fragment mMenuFragment;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +23,10 @@ public class FrameActivity extends Activity {
 		setContentView(R.layout.content_frame);
 		
 		//load the front view
-		mContent = new FeedFragment();
+		mFeedFragment = new FeedFragment();
 		getFragmentManager()
 		.beginTransaction()
-		.replace(R.id.content_frame, mContent)
+		.replace(R.id.content_frame, mFeedFragment)
 		.commit();
 		
 		//customize the sliding menu
@@ -42,8 +42,8 @@ public class FrameActivity extends Activity {
         
         //load the back view
     	FragmentTransaction t = this.getFragmentManager().beginTransaction();
-		mFrag = new MenuListFragment();
-		t.replace(R.id.menu_frame, mFrag);
+		mMenuFragment = new MenuListFragment();
+		t.replace(R.id.menu_frame, mMenuFragment);
 		t.commit();
 	}
 }

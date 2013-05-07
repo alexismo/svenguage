@@ -14,12 +14,16 @@
         android:layout_height="wrap_content" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/todaysChallengesLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/todays_challenges"
         style="@style/textAppearanceLargeLight" />
-
+    
+    <com.fima.cardsui.views.CardUI
+                    android:id="@+id/challengeCards"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
     </LinearLayout>
 
 </ScrollView>
