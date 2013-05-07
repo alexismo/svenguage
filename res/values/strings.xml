@@ -12,7 +12,11 @@
     <string name="title_activity_interview">InterviewActivity</string>
     <string name="title_activity_feed">FeedActivity</string>
     
+    <!-- Sliding Menu -->
     <string name="menu_icon_contentdesc">Menu Icon</string>
     <string name="menu_placeholder">Medium Text</string>
+    
+    <!-- Main Feed -->
+    <string name="todays_challenges">Today\'s Challenges</string>
 
 </resources>

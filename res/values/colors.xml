@@ -8,6 +8,7 @@
     <color name="svenguageGrey">#5b5b5b</color>
     <color name="slidingMenuLabel">#f3f3f3</color>
     <color name="slidingMenuGrey">#303030</color>
+    <color name="slidingMenuPressed">#595959</color>
     <color name="slidingMenuSep">#1e1e1e</color>
 
 </resources>

@@ -5,7 +5,9 @@
     android:orientation="horizontal"
     android:paddingTop="@dimen/list_padding"
     android:paddingBottom="@dimen/list_padding"
-    android:background="@color/slidingMenuGrey" >
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@drawable/list_item_bg" >
 
     <ImageView
         android:id="@+id/row_icon"
