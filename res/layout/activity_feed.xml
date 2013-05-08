@@ -4,26 +4,33 @@
     android:layout_height="match_parent"
     android:background="@drawable/paper_texture"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin_thin"
+    android:paddingRight="@dimen/activity_horizontal_margin_thin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:fillViewport="true"
     tools:context=".FeedFragment" >
     
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-    <TextView
-        android:id="@+id/todaysChallengesLabel"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/todays_challenges"
-        style="@style/textAppearanceLargeLight" />
-    
-    <com.fima.cardsui.views.CardUI
-                    android:id="@+id/challengeCards"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:orientation="vertical" >
+
+	   <TextView android:id="@+id/todaysChallengeLabel"
+	       android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:text="@string/todays_challenges"
+	       style="@style/textAppearanceLargeLight"
+	       android:paddingLeft="@dimen/activity_horizontal_margin"
+	       android:layout_alignParentTop="true" />
+	    
+	    <com.fima.cardsui.views.CardUI
+	                    android:id="@+id/challengeCards"
+	                    android:layout_width="match_parent"
+	                    android:layout_height="match_parent"
+	                    android:layout_alignParentBottom="true"
+	                    android:layout_below="@+id/todaysChallengeLabel"
+	                    android:padding="0dp"
+	                    android:layout_margin="0dp" />
+    </RelativeLayout>
 
 </ScrollView>

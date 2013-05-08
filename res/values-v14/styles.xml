@@ -24,6 +24,13 @@
     <style name="textAppearanceLargeLight" parent="android:TextAppearance.Large">
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/svenguageGrey</item>
+    </style>
+    
+    <style name="textAppearanceMediumLightGrey" parent="android:TextAppearance.Medium">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/svenguageLightGrey</item>
     </style>
     
     <!-- Button Styles -->

@@ -7,12 +7,12 @@ import fragments.MenuListFragment;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.app.ListFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 
-public class FrameActivity extends Activity {
+public class FrameActivity extends FragmentActivity {
 
 	private Fragment mFeedFragment;
 	private Fragment mMenuFragment;
@@ -22,12 +22,11 @@ public class FrameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.content_frame);
 		
+		FragmentTransaction t = this.getSupportFragmentManager().beginTransaction();
+		
 		//load the front view
 		mFeedFragment = new FeedFragment();
-		getFragmentManager()
-		.beginTransaction()
-		.replace(R.id.content_frame, mFeedFragment)
-		.commit();
+		t.replace(R.id.content_frame, mFeedFragment);
 		
 		//customize the sliding menu
 		SlidingMenu menu = new SlidingMenu(this);
@@ -41,9 +40,10 @@ public class FrameActivity extends Activity {
         menu.setMenu(R.layout.menu_frame);
         
         //load the back view
-    	FragmentTransaction t = this.getFragmentManager().beginTransaction();
 		mMenuFragment = new MenuListFragment();
 		t.replace(R.id.menu_frame, mMenuFragment);
+		
+		//commit the fragment changes to all the frames
 		t.commit();
 	}
 }
