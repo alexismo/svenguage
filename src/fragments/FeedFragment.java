@@ -6,7 +6,6 @@ import com.alexismorin.linguage.se.sv.R.drawable;
 import com.alexismorin.linguage.se.sv.R.id;
 import com.alexismorin.linguage.se.sv.R.layout;
 import com.alexismorin.linguage.util.ChallengeCard;
-import com.alexismorin.linguage.util.MyPlayCard;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
 import com.slidingmenu.lib.SlidingMenu;
