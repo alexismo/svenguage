@@ -1,0 +1,11 @@
+package com.alexismorin.linguage.laps.grammar;
+
+import com.alexismorin.linguage.laps.words.Word;
+
+public interface Subjecting{
+	/** 
+	 * @returns whether or not the word can be used as a grammatical subject.
+	 * Sticking with Pronouns for now.
+	 */
+	boolean is_subject(Word followingWord);
+}

@@ -1,5 +1,8 @@
 package com.alexismorin.linguage.se.sv;
 
+import processing.core.PApplet;
+
+import com.alexismorin.linguage.laps.LAPs;
 import com.slidingmenu.lib.SlidingMenu;
 
 import fragments.FeedFragment;
@@ -7,12 +10,14 @@ import fragments.MenuListFragment;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.Menu;
 
-public class FrameActivity extends FragmentActivity {
+public class FrameActivity extends FragmentActivity implements FeedFragment.OnChallengeCardSelectedListener{
 
 	private Fragment mFeedFragment;
 	private Fragment mMenuFragment;
@@ -45,5 +50,31 @@ public class FrameActivity extends FragmentActivity {
 		
 		//commit the fragment changes to all the frames
 		t.commit();
+	}
+
+	@Override
+	public void onChallengeCardSelected(Bundle bundle) {
+		Log.i("challenge clicked", "gonna start some crazy b*shit");
+		
+		Intent challengeAct = new Intent(FrameActivity.this, LAPs.class);
+		startActivity(challengeAct);
+		
+		
+		/*String startThis = bundle.getString("startActivity");
+		Class cls;
+		try {
+			cls = Class.forName(startThis);
+			if(cls.isInstance(Activity.class) || cls.isInstance(PApplet.class)){
+				//Activity a = (Activity) cls.newInstance();
+				Intent challengeAct = new Intent(FrameActivity.this, cls.getClass());
+				startActivity(challengeAct);
+			}else{
+				Log.e("class cast exception", "cls is a "+cls.getName());
+			}
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 	}
 }

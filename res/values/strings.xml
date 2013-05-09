@@ -11,6 +11,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_interview">InterviewActivity</string>
     <string name="title_activity_feed">FeedActivity</string>
+    <string name="title_activity_LAPs">LAPsActivity</string>
     
     <!-- Sliding Menu -->
     <string name="menu_icon_contentdesc">Menu Icon</string>

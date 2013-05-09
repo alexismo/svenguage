@@ -32,7 +32,7 @@ public class SwedenActivity extends LinguageActivity {
 			public void onClick(View v) {
 				Intent interviewIntent = new Intent(SwedenActivity.this, InterviewActivity.class);
 				startActivity(interviewIntent);
-				//finish();
+				finish();
 			}
 		});
 		
