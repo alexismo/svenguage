@@ -3,18 +3,22 @@ package com.alexismorin.linguage.se.sv;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.actionbarsherlock.app.SherlockActivity;
+import com.alexismorin.linguage.util.LinguageActivity;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.widget.Toast;
 
-public class FirstLaunchActivity extends Activity {
+public class FirstLaunchActivity extends LinguageActivity {
 
 	private Timer mTimer;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		setTheme(R.style.Theme_SvActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_first_launch);
 		

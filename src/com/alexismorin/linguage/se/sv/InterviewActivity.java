@@ -1,5 +1,7 @@
 package com.alexismorin.linguage.se.sv;
 
+import com.alexismorin.linguage.util.LinguageActivity;
+
 import fragments.FeedFragment;
 import android.os.Bundle;
 import android.app.Activity;
@@ -10,12 +12,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-public class InterviewActivity extends Activity {
+public class InterviewActivity extends LinguageActivity {
 
 	Button continueBtn;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		setTheme(R.style.Theme_SvActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_interview);
 		
