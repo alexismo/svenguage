@@ -11,13 +11,17 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_interview">InterviewActivity</string>
     <string name="title_activity_feed">FeedActivity</string>
-    <string name="title_activity_LAPs">LAPsActivity</string>
+    <string name="title_activity_LAPs">Swedish LAPs</string>
     
     <!-- Sliding Menu -->
     <string name="menu_icon_contentdesc">Menu Icon</string>
     <string name="menu_placeholder">Medium Text</string>
+    <string name="my_swedish">My Swedish</string>
     
     <!-- Main Feed -->
     <string name="todays_challenges">Today\'s Challenges</string>
+    <string name="user_face">User\'s face</string>
+    <string name="challenge_icon">Challenge Icon</string>
+    
 
 </resources>

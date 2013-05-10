@@ -15,14 +15,16 @@ import processing.core.PVector;
 
 public class Scene {
 	PApplet parent;
-	PFont ubuntu;
+	PFont font;
+	PFont fontLarge;
 	Board board;
 
 	public Scene(PApplet p, Board board) {
 		super();
 		this.parent = p;
 		this.board = board;
-		ubuntu = parent.createFont("SansSerif", 24);
+		font = parent.createFont("SansSerif", 24);
+		fontLarge = parent.createFont("Sans Serif", 48);
 	}
 
 	void update() {
@@ -30,7 +32,7 @@ public class Scene {
 			Word w = board.words.get(i);
 			if (w.pos == null) {// create a default position for the words.
 								// simplifies instanciation
-				w.pos = new PVector(100 * (i + 1) + 20, 100);
+				w.pos = new PVector(Config.wordSize * (i + 1) + 20/*margin*/, Config.wordSize/2);//rectMode is CORNER
 			}
 
 			if (!w.snapped) {// change the words back to singular / infinitive
@@ -50,21 +52,28 @@ public class Scene {
 
 	void draw() {
 		parent.background(255);
-		parent.strokeWeight(2);
+		parent.strokeWeight(4);
 		parent.noFill();
 		parent.ellipseMode(parent.CENTER);
 
+		//draw the words atop zone
+		parent.fill(200);
+		parent.noStroke();
+		parent.rect(0,  0, parent.width, 2*Config.wordSize);
+		parent.noFill();
+		
 		// draw the word line
 		parent.stroke(38, 133, 36);
 		parent.line(0, parent.height / 2, parent.width, parent.height / 2);
-
+		
 		// draw tiles
 		drawTiles();
+		drawSentence();
 	}
 
 	void drawTiles() {
 		parent.rectMode(parent.CORNER);
-		parent.textFont(ubuntu, 24);
+		parent.textFont(font, 24);
 
 		// not useful for now
 		Sentence sentence = board.makeSentence();
@@ -106,7 +115,7 @@ public class Scene {
 			}
 
 			// finish drawing the tile
-			parent.fill(200);
+			parent.fill(Config.tileColor);
 			parent.rect(w.pos.x, w.pos.y, Config.wordSize, Config.wordSize);
 
 			if (w.errors.size() > 0) {
@@ -136,12 +145,20 @@ public class Scene {
 						(float) (parent.height * 0.75 + ((i + 1) * 30)));
 			}
 		}
-		
-		// draw the Sentence
-		parent.text(board.getSentenceString(), parent.width / 2,
-				parent.height - 100);
 	}
 
+	void drawSentence(){
+		// draw the Sentence
+		parent.textAlign(parent.CENTER);
+		parent.textFont(fontLarge);
+		parent.text(board.getSentenceString(), parent.width / 2,
+				parent.height - 100);
+		
+		//reset to what it was
+		parent.textFont(font);
+		parent.textAlign(parent.LEFT);
+	}
+	
 	void drawBezier(Word w1, Word w2) {
 		// center of the 1st word
 		parent.noFill();

@@ -1,5 +1,6 @@
 package fragments;
 
+import com.actionbarsherlock.app.SherlockListFragment;
 import com.alexismorin.linguage.se.sv.R;
 
 import android.content.Context;
@@ -12,7 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MenuListFragment extends ListFragment {
+public class MenuListFragment extends SherlockListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		return inflater.inflate(R.layout.list, null);
 	}

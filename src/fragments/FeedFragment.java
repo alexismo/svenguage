@@ -1,5 +1,6 @@
 package fragments;
 
+import com.actionbarsherlock.app.SherlockFragment;
 import com.alexismorin.linguage.laps.LAPs;
 import com.alexismorin.linguage.se.sv.FirstLaunchActivity;
 import com.alexismorin.linguage.se.sv.R;
@@ -10,13 +11,11 @@ import com.alexismorin.linguage.se.sv.R.layout;
 import com.alexismorin.linguage.util.ChallengeCard;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
-import com.slidingmenu.lib.SlidingMenu;
 
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,7 +26,7 @@ import android.webkit.WebView.FindListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FeedFragment extends Fragment {
+public class FeedFragment extends SherlockFragment {
 
 	protected ListFragment mFrag;
 	protected CardUI mCardView;
@@ -37,7 +36,6 @@ public class FeedFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.activity_feed, container, false);
 		//TextView tv = (TextView) view.findViewById(R.id.todaysChallengesLabel);
-		
 		
 		mCardView = (CardUI) view.findViewById(R.id.challengeCards);
 		mCardView.setSwipeable(false);
