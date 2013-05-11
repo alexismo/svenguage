@@ -19,7 +19,10 @@ public class SwedenActivity extends LinguageActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Theme_SvActionBar);
+		getSupportActionBar().setDisplayShowHomeEnabled(false);
+		getSupportActionBar().setDisplayShowTitleEnabled(false);
+		getSupportActionBar().hide();
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sweden);
 		

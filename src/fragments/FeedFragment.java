@@ -34,13 +34,23 @@ public class FeedFragment extends SherlockFragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.activity_feed, container, false);
+		View view = inflater.inflate(R.layout.fragment_feed, container, false);
 		//TextView tv = (TextView) view.findViewById(R.id.todaysChallengesLabel);
 		
 		mCardView = (CardUI) view.findViewById(R.id.challengeCards);
 		mCardView.setSwipeable(false);
 		
-		mCardView.addCard(new ChallengeCard("Greetings in Swedish", "(Hälsningar)", R.drawable.challenge_hand));
+		ChallengeCard vocabCard = new ChallengeCard("Greetings in Swedish", "(Hälsningar)", R.drawable.challenge_hand);
+		vocabCard.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Bundle b = new Bundle();
+				b.putString("startActivity", "com.alexismorin.linguage.se.sv.VocabularyActivity");
+				mListener.onChallengeCardSelected(b);
+			}
+		});
+		mCardView.addCard(vocabCard);
 		
 		ChallengeCard lapsCard = new ChallengeCard("Build a sentence", "(Bygg en mening)", R.drawable.challenge_order);
 		lapsCard.setOnClickListener(new OnClickListener() {
@@ -52,8 +62,8 @@ public class FeedFragment extends SherlockFragment {
 				mListener.onChallengeCardSelected(b);
 			}
 		});
-		
 		mCardView.addCard(lapsCard);
+		
 		mCardView.addCard(new ChallengeCard("At the Doctor's", "(Hos läkaren)", R.drawable.challenge_conversation));
 		mCardView.addCard(new ChallengeCard("Tag a photograph", "(Tagga en bild)", R.drawable.challenge_photo));
 		mCardView.addCard(new ChallengeCard("Learn with friends", "(Lär dig med kompisar)", R.drawable.challenge_facebook));

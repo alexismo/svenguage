@@ -27,8 +27,8 @@
             android:name="com.alexismorin.linguage.se.sv.SwedenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_sweden"
-            android:theme="@style/LinguageTheme"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/LinguageTheme" >
         </activity>
 s
         <activity
@@ -47,8 +47,19 @@ s
             android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.alexismorin.linguage.se.sv.VocabularyActivity"
+            android:label="@string/title_activity_vocabulary" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:text="I'm in Sweden to…"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
         android:textAppearance="@style/textAppearanceLargeLight" />
 
@@ -25,15 +25,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/inSwedenToLabel"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignLeft="@+id/inSwedenToLabel"
+        android:layout_alignRight="@+id/inSwedenToLabel" />
     
     <TextView
         android:id="@+id/swedishLevelLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/inSwedenToSpin"
-        android:text="My current level of Swedish is…"
+        android:text="My level of Swedish is…"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
         android:textAppearance="@style/textAppearanceLargeLight" />
@@ -44,8 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/swedishLevelLabel"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignLeft="@+id/inSwedenToLabel"
+        android:layout_alignRight="@+id/inSwedenToLabel" />
     
     <LinearLayout
         android:id="@+id/disclaimer"
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/swedishLevelSpin"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal" >
 
         <ImageView
@@ -62,7 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_margin="12dp"
-            android:src="@drawable/info_i" />
+            android:src="@drawable/info_i"
+            android:contentDescription="@string/info" />
 
         <TextView android:id="@+id/disclaimerText"
             android:layout_width="wrap_content"
