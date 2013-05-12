@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/activity_horizontal_margin_thin">
+    
+    <ImageView
+        android:id="@+id/conv_head_left"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:scaleType="centerInside"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin_thin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin_thin"
+        android:contentDescription="@string/reply_left" />
+    
+    <ImageView android:id="@+id/conv_head_right"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:scaleType="centerInside"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin_thin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin_thin"
+        android:contentDescription="@string/reply_right" />
+
+    <TextView android:id="@+id/vocab_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:text="@string/menu_placeholder"
+        android:layout_gravity="center_horizontal"
+        android:layout_toLeftOf="@+id/conv_head_right"
+        android:layout_toRightOf="@+id/conv_head_left"
+        android:gravity="center"
+        style="@style/textAppearanceLargeLight" />
+    
+</RelativeLayout>

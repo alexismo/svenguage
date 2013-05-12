@@ -26,4 +26,9 @@ public class VocabFlavorImage implements VocabularyListItem{
 	public boolean is_sentence() {
 		return false;
 	}
+
+	@Override
+	public boolean is_reply() {
+		return false;
+	}
 }

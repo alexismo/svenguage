@@ -29,5 +29,7 @@
     <string name="vocab_sentences">Sentences</string>
     <string name="vocab_context">In Context</string>
     <string name="vocab_flavor">Flavor Image</string>
+    <string name="reply_left">Reply Left</string>
+    <string name="reply_right">Reply Right</string>
 
 </resources>

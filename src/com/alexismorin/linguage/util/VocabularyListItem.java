@@ -4,4 +4,5 @@ public interface VocabularyListItem {
 	public boolean is_flavor_image();
 	public boolean is_word();
 	public boolean is_sentence();
+	public boolean is_reply();
 }

@@ -28,4 +28,9 @@ public class VocabWord implements VocabularyListItem {
 		return false;
 	}
 
+	@Override
+	public boolean is_reply() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

@@ -22,8 +22,9 @@ public class VocabularyAdapter extends BaseAdapter {
 	private static final int ITEM_VIEW_TYPE_FLAVOR_IMAGE = 1;
 	private static final int ITEM_VIEW_TYPE_WORD = 2;
 	private static final int ITEM_VIEW_TYPE_SENTENCE = 3;
+	private static final int ITEM_VIEW_TYPE_REPLY = 4;
 	
-	private static final int ITEM_VIEW_TYPE_COUNT = 4;
+	private static final int ITEM_VIEW_TYPE_COUNT = 5;
 	
 	public VocabularyAdapter(Context context,
 			List<VocabularyListItem> vocabListItems) {
@@ -49,7 +50,7 @@ public class VocabularyAdapter extends BaseAdapter {
 
 	static class VocabHolder{
 		TextView word;
-		ImageView flavor_image;
+		ImageView flavor_image, conv_left, conv_right;
 	}
 	
 	@Override
@@ -58,6 +59,8 @@ public class VocabularyAdapter extends BaseAdapter {
 			return ITEM_VIEW_TYPE_FLAVOR_IMAGE;
 		if(vocabListItems.get(position).is_word())
 			return ITEM_VIEW_TYPE_WORD;
+		if(vocabListItems.get(position).is_reply())
+			return ITEM_VIEW_TYPE_REPLY;
 		else
 			return ITEM_VIEW_TYPE_SEPARATOR;
 	}
@@ -78,6 +81,13 @@ public class VocabularyAdapter extends BaseAdapter {
 				
 				vocabHolder.word = (TextView) convertView.findViewById(R.id.vocab_word);
 			}
+			if(getItemViewType(position) == ITEM_VIEW_TYPE_REPLY){
+				convertView = m_inflater.inflate(R.layout.vocab_reply_list_item, parent, false);
+				
+				vocabHolder.word = (TextView) convertView.findViewById(R.id.vocab_word);
+				vocabHolder.conv_left = (ImageView) convertView.findViewById(R.id.conv_head_left);
+				vocabHolder.conv_right = (ImageView) convertView.findViewById(R.id.conv_head_right);
+			}
 			
 			convertView.setTag(vocabHolder);
 		}else{
@@ -93,6 +103,18 @@ public class VocabularyAdapter extends BaseAdapter {
 		if(getItemViewType(position) == ITEM_VIEW_TYPE_WORD){
 			VocabWord word = (VocabWord) getItem(position);
 			vocabHolder.word.setText(word.getWord());
+		}
+		if(getItemViewType(position) == ITEM_VIEW_TYPE_REPLY){
+			VocabReply reply = (VocabReply) getItem(position);
+			vocabHolder.word.setText(reply.getWord());
+			if(reply.getSpeakerSide() == 0){
+				vocabHolder.conv_left.setImageDrawable(context.getResources().getDrawable(reply.conversationalistDrawable));
+				vocabHolder.conv_right.setImageResource(0);
+			}
+			if(reply.getSpeakerSide() == 1){
+				vocabHolder.conv_right.setImageDrawable(context.getResources().getDrawable(reply.conversationalistDrawable));
+				vocabHolder.conv_left.setImageResource(0);
+			}
 		}
 		
 		
