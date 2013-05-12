@@ -29,17 +29,50 @@ public class VocabularySectionFragment extends Fragment {
 	private List<VocabularyListItem> wordsList;
 	private VocabularyAdapter vocabAdapter;
 
-	public VocabularySectionFragment() {
+	public VocabularySectionFragment(int i) {
 		if(wordsList == null){
 			wordsList = new ArrayList<VocabularyListItem>();//instantiate the thing
 			
-			wordsList.add(new VocabFlavorImage(R.drawable.baby));
-			
-			wordsList.add(new VocabWord("Hej"));
-			wordsList.add(new VocabWord("Hallå"));
-			wordsList.add(new VocabWord("Tjenare"));
-			wordsList.add(new VocabWord("Tjena"));
-			wordsList.add(new VocabWord("Tja"));
+			//position is 1 2 or 3
+			switch (i) {
+			case 1:
+				wordsList.add(new VocabFlavorImage(R.drawable.restaurant));
+				
+				wordsList.add(new VocabWord("Får vi beställa?"));
+				wordsList.add(new VocabWord("Jag skulle vilja..."));
+				wordsList.add(new VocabWord("Vad har ni för dagens lunch?"));
+				wordsList.add(new VocabWord("Har ni ett vegetariskt/glutenfri alternativ?"));
+				wordsList.add(new VocabWord("Jag ska ta..."));
+				wordsList.add(new VocabWord("Är kaffet ingår?"));
+				wordsList.add(new VocabWord("Vi betalar ihop/separat."));
+				break;
+
+			case 2:
+				wordsList.add(new VocabFlavorImage(R.drawable.baby));
+				
+				wordsList.add(new VocabWord("Hej"));
+				wordsList.add(new VocabWord("Hallå"));
+				wordsList.add(new VocabWord("Tjenare"));
+				wordsList.add(new VocabWord("Tjena"));
+				wordsList.add(new VocabWord("Tja (slang)"));
+				wordsList.add(new VocabWord("God morgon"));
+				wordsList.add(new VocabWord("God kväll"));
+				break;
+			case 3:
+				wordsList.add(new VocabFlavorImage(R.drawable.restaurant));
+				
+				wordsList.add(new VocabWord("Får vi beställa?"));
+				wordsList.add(new VocabWord("Jag skulle vilja..."));
+				wordsList.add(new VocabWord("Vad har ni för dagens lunch?"));
+				wordsList.add(new VocabWord("Har ni ett vegetariskt/glutenfri alternativ?"));
+				wordsList.add(new VocabWord("Jag ska ta..."));
+				wordsList.add(new VocabWord("Är kaffet ingår?"));
+				wordsList.add(new VocabWord("Vi betalar ihop/separat."));
+				break;
+				
+			default:
+				break;
+			}
 			
 		}
 	}

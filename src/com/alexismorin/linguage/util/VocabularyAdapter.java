@@ -78,18 +78,23 @@ public class VocabularyAdapter extends BaseAdapter {
 				
 				vocabHolder.word = (TextView) convertView.findViewById(R.id.vocab_word);
 			}
+			
+			convertView.setTag(vocabHolder);
 		}else{
 			vocabHolder = (VocabHolder) convertView.getTag();
     	}
 		
 		if(getItemViewType(position) == ITEM_VIEW_TYPE_FLAVOR_IMAGE){
-			vocabHolder.flavor_image.setImageDrawable(context.getResources().getDrawable(R.drawable.baby));
+			VocabFlavorImage flvrImg = (VocabFlavorImage) getItem(position);
+			vocabHolder.flavor_image.setImageDrawable(context.getResources().getDrawable(
+				flvrImg.getImageResource()
+			));
 		}
 		if(getItemViewType(position) == ITEM_VIEW_TYPE_WORD){
-			Log.i("Word","It's a word");
 			VocabWord word = (VocabWord) getItem(position);
 			vocabHolder.word.setText(word.getWord());
 		}
+		
 		
 		return convertView;
 	}

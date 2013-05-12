@@ -3,6 +3,10 @@ package com.alexismorin.linguage.util;
 public class VocabFlavorImage implements VocabularyListItem{
 	int imageResource;
 
+	public int getImageResource() {
+		return imageResource;
+	}
+
 	public VocabFlavorImage(int imageResource) {
 		super();
 		this.imageResource = imageResource;
