@@ -38,6 +38,7 @@ public class VocabularyActivity extends SherlockFragmentActivity {
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
+	String topic;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,8 @@ public class VocabularyActivity extends SherlockFragmentActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_vocabulary);
+		
+		topic = getIntent().getExtras().getString("activityTopic");
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
@@ -71,7 +74,7 @@ public class VocabularyActivity extends SherlockFragmentActivity {
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
-			Fragment fragment = new VocabularySectionFragment(position+1);
+			Fragment fragment = new VocabularySectionFragment(position+1, topic);
 			Bundle args = new Bundle();
 			args.putInt(VocabularySectionFragment.ARG_SECTION_NUMBER, position + 1);
 			fragment.setArguments(args);

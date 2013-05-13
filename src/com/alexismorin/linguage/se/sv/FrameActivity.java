@@ -65,20 +65,28 @@ public class FrameActivity extends SherlockFragmentActivity implements FeedFragm
 	}
 	
 	@Override
-	public void onChallengeCardSelected(Bundle bundle) {
+	public void onChallengeCardSelected(Bundle challengeCardBundle) {
 		Log.i("challenge clicked", "gonna start some crazy b*shit");
 		
-		String startThis = bundle.getString("startActivity");
+		String startThis = challengeCardBundle.getString("startActivity");
 		if(startThis.contains("LAPs")){
 			Intent lapsAct = new Intent(FrameActivity.this, LAPs.class);
-			startActivity(lapsAct);
+			startActivity(lapsAct, challengeCardBundle);
 		}
 		
 		if(startThis.contains("VocabularyActivity")){
-			Intent vocabAct = new Intent(FrameActivity.this, VocabularyActivity.class);
+			String topic = challengeCardBundle.getString("activityTopic");
+			
+			Intent vocabAct = new Intent(this, VocabularyActivity.class);
+			vocabAct.putExtra("activityTopic", topic);
+			/*
+			Bundle vocabB = vocabAct.getExtras();
+			vocabB.putString("activityTopic", topic);
+			vocabAct.putExtras(vocabB);
+			*/
+			
 			startActivity(vocabAct);
 		}
-		
 		
 		/*
 		 * ==CAN ONLY START LAPs FOR NOW

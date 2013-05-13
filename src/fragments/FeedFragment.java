@@ -47,6 +47,7 @@ public class FeedFragment extends SherlockFragment {
 			public void onClick(View v) {
 				Bundle b = new Bundle();
 				b.putString("startActivity", "com.alexismorin.linguage.se.sv.VocabularyActivity");
+				b.putString("activityTopic", "bus");
 				mListener.onChallengeCardSelected(b);
 			}
 		});
@@ -71,6 +72,7 @@ public class FeedFragment extends SherlockFragment {
 			public void onClick(View v) {
 				Bundle b = new Bundle();
 				b.putString("startActivity", "com.alexismorin.linguage.se.sv.VocabularyActivity");
+				b.putString("activityTopic", "restaurant");
 				mListener.onChallengeCardSelected(b);
 			}
 		});
