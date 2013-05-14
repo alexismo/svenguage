@@ -24,6 +24,7 @@
     <string name="user_face">User\'s face</string>
     <string name="challenge_icon">Challenge Icon</string>
     <string name="title_activity_vocabulary">VocabularyActivity</string>
+    <string name="friend_challenge_title">Charles watched…</string>
     <!-- Vocabulary Activity -->
     <string name="vocab_words">Words</string>
     <string name="vocab_sentences">Sentences</string>

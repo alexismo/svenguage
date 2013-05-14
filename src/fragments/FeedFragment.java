@@ -9,6 +9,7 @@ import com.alexismorin.linguage.se.sv.R.drawable;
 import com.alexismorin.linguage.se.sv.R.id;
 import com.alexismorin.linguage.se.sv.R.layout;
 import com.alexismorin.linguage.util.ChallengeCard;
+import com.alexismorin.linguage.util.FriendChallengeCard;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
 
@@ -80,6 +81,9 @@ public class FeedFragment extends SherlockFragment {
 		
 		mCardView.addCard(new ChallengeCard("Tag a photograph", "(Tagga en bild)", R.drawable.challenge_photo));
 		mCardView.addCard(new ChallengeCard("Learn with friends", "(Lär dig med kompisar)", R.drawable.challenge_facebook));
+		
+		mCardView.addCard(new FriendChallengeCard("Charles watched…", "Melodifestivalen 1979", R.drawable.friend, R.drawable.friend_challenge_icon));
+		
 		
 		mCardView.refresh();
 		
