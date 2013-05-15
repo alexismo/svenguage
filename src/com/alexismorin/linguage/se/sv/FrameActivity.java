@@ -88,6 +88,11 @@ public class FrameActivity extends SherlockFragmentActivity implements FeedFragm
 			startActivity(vocabAct);
 		}
 		
+		if(startThis.contains("VideoActivity")){
+			Intent videoIntent = new Intent(this, VideoActivity.class);
+			startActivity(videoIntent, challengeCardBundle);
+		}
+		
 		/*
 		 * ==CAN ONLY START LAPs FOR NOW
 		 * String startThis = bundle.getString("startActivity");

@@ -82,7 +82,17 @@ public class FeedFragment extends SherlockFragment {
 		mCardView.addCard(new ChallengeCard("Tag a photograph", "(Tagga en bild)", R.drawable.challenge_photo));
 		mCardView.addCard(new ChallengeCard("Learn with friends", "(Lär dig med kompisar)", R.drawable.challenge_facebook));
 		
-		mCardView.addCard(new FriendChallengeCard("Charles watched…", "Melodifestivalen 1979", R.drawable.friend, R.drawable.friend_challenge_icon));
+		FriendChallengeCard melodifestivalen = new FriendChallengeCard("Charles watched…", "Melodifestivalen 1979", R.drawable.friend, R.drawable.friend_challenge_icon);
+		melodifestivalen.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Bundle b = new Bundle();
+				b.putString("startActivity", "com.alexismorin.linguage.se.sv.VideoActivity");
+				mListener.onChallengeCardSelected(b);
+			}
+		});
+		mCardView.addCard(melodifestivalen);
 		
 		
 		mCardView.refresh();

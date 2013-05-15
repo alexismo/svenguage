@@ -47,7 +47,10 @@ public class VocabularyActivity extends SherlockFragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_vocabulary);
 		
-		topic = getIntent().getExtras().getString("activityTopic");
+		if(getIntent().hasExtra("activityTopic"))
+			topic = getIntent().getExtras().getString("activityTopic");
+		else
+			topic = "restaurant";
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.

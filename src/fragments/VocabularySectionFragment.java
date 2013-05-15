@@ -16,6 +16,7 @@ import com.alexismorin.linguage.util.VocabWord;
 import com.alexismorin.linguage.util.VocabularyAdapter;
 import com.alexismorin.linguage.util.VocabularyListItem;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -35,6 +36,11 @@ public class VocabularySectionFragment extends Fragment {
 	private List<VocabularyListItem> wordsList;
 	private VocabularyAdapter vocabAdapter;
 
+	
+	public VocabularySectionFragment(){
+		
+	}
+	
 	public VocabularySectionFragment(int i, String topic) {
 		if(wordsList == null){
 			wordsList = new ArrayList<VocabularyListItem>();//instantiate the thing
@@ -49,8 +55,6 @@ public class VocabularySectionFragment extends Fragment {
 					wordsList = new WordsRestaurant2();
 					break;
 				case 3:
-					
-					
 					wordsList = new WordsRestaurant3();
 					
 					break;

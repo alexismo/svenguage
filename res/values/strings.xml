@@ -12,6 +12,7 @@
     <string name="title_activity_interview">InterviewActivity</string>
     <string name="title_activity_feed">FeedActivity</string>
     <string name="title_activity_LAPs">Swedish LAPs</string>
+    <string name="title_activity_video">VideoActivity</string>
     <string name="info">Info</string>
 
     <!-- Sliding Menu -->
@@ -32,5 +33,33 @@
     <string name="vocab_flavor">Flavor Image</string>
     <string name="reply_left">Reply Left</string>
     <string name="reply_right">Reply Right</string>
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <!-- video activity -->
+    <string name="video_captions">Det känns som jag vandrar fram i utnöta skor\n
+Täckta av vägens damm där minnena gror\n
+\n\n
+Minns du när vi såg varann\n
+En flaska vin och ett rock ‘n’ roll band\n
+Lustigt hur det stannar kvar\n
+Hur man minns, allting smått\n
+Dras den tid, som har gått, som igår\n
+\n\n
+Det känns som jag vandrar fram i utnöta skor\n
+Täckta av vägens damm där minnena gror\n
+Det känns som jag vandrar fram i utnöta skor\n
+Täckta av vägens damm där minnena gror\n
+\n\n
+Minns du hur dom sen gick fel\n
+Dom krav som kom, växte snabbt till ett gräl\n
+Va hjälper dej att ångra sej\n
+Och tro att de som hänt\n
+Skedde mot, bättre vett, växla spår\n
+\n\n
+Det känns som jag vandrar fram i utnöta skor\n
+Täckta av vägens damm där minnena gror\n
+\n\n
+Det känns som jag vandrar fram i utnöta skor\n
+Täckta av vägens damm där minnena gror\n
+Där minnena gror</string>
 
 </resources>

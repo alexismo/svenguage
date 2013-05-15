@@ -33,6 +33,12 @@
         <item name="android:textColor">@color/svenguageLightGrey</item>
     </style>
     
+    <style name="textAppearanceMediumRegular" parent="android:TextAppearance.Medium">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/svenguageGrey</item>
+    </style>
+    
     <!-- Button Styles -->
     <style name="svenguageBlueButton" parent="android:style/Widget.Button">
         <item name="android:background">@drawable/blue_button_states</item>
