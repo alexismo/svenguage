@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:paddingTop="@dimen/list_padding"
     android:paddingBottom="@dimen/list_padding"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -13,21 +12,25 @@
         android:id="@+id/row_icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
         android:scaleType="fitCenter"
+        android:layout_centerVertical="true"
         android:src="@drawable/ic_launcher"
         android:contentDescription="@string/menu_icon_contentdesc" />
 
     <TextView
         android:id="@+id/row_title"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:padding="10dp"
+        android:layout_alignTop="@+id/row_icon"
+        android:layout_alignBottom="@+id/row_icon"
+        android:layout_toRightOf="@+id/row_icon"
         android:text="@string/menu_placeholder"
         android:fontFamily="sans-serif-light"
         android:textSize="22sp"
         android:textColor="@color/slidingMenuLabel"
         android:textAppearance="@android:style/TextAppearance.Medium" />
 
-</LinearLayout>
+</RelativeLayout>
