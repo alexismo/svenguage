@@ -17,14 +17,17 @@ public class Scene {
 	PApplet parent;
 	PFont font;
 	PFont fontLarge;
+	PFont fontMega;
 	Board board;
+	boolean firstTouched = false;//for the intro message
 
 	public Scene(PApplet p, Board board) {
 		super();
 		this.parent = p;
 		this.board = board;
-		font = parent.createFont("SansSerif", 24);
+		font = parent.createFont("SansSerif", 28);
 		fontLarge = parent.createFont("Sans Serif", 48);
+		fontMega = parent.createFont("SansSerif", 80);
 	}
 
 	void update() {
@@ -69,13 +72,28 @@ public class Scene {
 		// draw tiles
 		drawTiles();
 		drawSentence();
+		
+		//if not touched yet
+		if(!firstTouched){
+			parent.fill(0, 200);
+			parent.rect(0, 0, parent.width, parent.height);
+			
+			parent.textFont(fontMega);
+			//parent.stroke(0);
+			parent.fill(240);
+			parent.text("Drag words from the gutter \nonto the green sentence line \nto score points.",
+					parent.width/40, parent.height/4);
+			
+			parent.textFont(fontLarge);
+			parent.text("Touch anywhere to start.",
+					parent.width/40, (parent.height/3)*2);
+		}
 	}
 
 	void drawTiles() {
 		parent.rectMode(parent.CORNER);
-		parent.textFont(font, 24);
+		parent.textFont(font);
 
-		// not useful for now
 		Sentence sentence = board.makeSentence();
 		sentence.checkSentenceGrammar();
 
@@ -138,11 +156,12 @@ public class Scene {
 		// draw the errors (global sentence validation)
 		if (sentence.hasErrors) {
 			parent.fill(205, 24, 24);
+			parent.textAlign(parent.CENTER);
 			// draw the error
 			for (int i = 0; i < sentence.errors.size(); i++) {
 				SentenceError e = sentence.errors.get(i);
-				parent.text(e.getMessage(), 20,
-						(float) (parent.height * 0.75 + ((i + 1) * 30)));
+				parent.text(e.getMessage(), parent.width / 2,
+						(float) (parent.height * 0.60 + ((i + 1) * 30)));
 			}
 		}
 	}
@@ -170,6 +189,9 @@ public class Scene {
 	}
 
 	void onMouseEvent(MouseEvent e) {
+		if(!firstTouched){
+			firstTouched = true;
+		}
 		board.onMouseEvent(e);
 	}
 }

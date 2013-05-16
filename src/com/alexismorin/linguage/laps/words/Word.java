@@ -33,6 +33,13 @@ public class Word extends Tile implements Comparable<Word>{
 		this.word = newWord;
 	}
 	
+	public boolean hasErrors(){
+		if(this.errors.size() > 0)
+			return true;
+		else
+			return false;
+	}
+	
 	@Override
 	public int compareTo(Word o) {
 		int compareX = Math.round(((Word) o).pos.x);

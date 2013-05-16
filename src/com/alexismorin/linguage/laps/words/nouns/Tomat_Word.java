@@ -9,6 +9,7 @@ import com.alexismorin.linguage.laps.grammar.GrammaticalGender;
 import com.alexismorin.linguage.laps.grammar.GrammaticalNumber;
 import com.alexismorin.linguage.laps.grammar.Pluralizable;
 import com.alexismorin.linguage.laps.grammar.errors.GrammaticalGenderError;
+import com.alexismorin.linguage.laps.grammar.errors.NoArticleError;
 import com.alexismorin.linguage.laps.words.Article;
 import com.alexismorin.linguage.laps.words.Noun;
 import com.alexismorin.linguage.laps.words.Word;
@@ -76,6 +77,10 @@ public class Tomat_Word extends Noun implements Actionnable, Pluralizable, Defin
 		if(pWord instanceof Article){
 			this.definiteness = "indefinite";
 			return true;
+		}
+		
+		if(!(pWord instanceof Article) && !(nWord instanceof Article)){
+			this.errors.add(new NoArticleError());
 		}
 		
 		return false;

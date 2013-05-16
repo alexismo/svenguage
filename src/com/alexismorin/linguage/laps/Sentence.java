@@ -70,7 +70,8 @@ public class Sentence {
 	public void checkSentenceGrammar() {
 		hasErrors = false;
 		errors.clear();
-		boolean hasVerb = false;
+		boolean hasVerb= false;
+		boolean wordsHaveErrors = false;
 
 		for (int i = 0; i < sentenceWords.size(); i++) {
 			Word w = sentenceWords.get(i);
@@ -93,6 +94,10 @@ public class Sentence {
 				if(w instanceof TimeIndicator){
 					tense = ((TimeIndicator) w).getTense();
 				}
+				
+				if(w.hasErrors()){
+					wordsHaveErrors = true;
+				}
 			}
 		}
 		
@@ -102,7 +107,7 @@ public class Sentence {
 				errors.add(e);
 		}
 
-		if (errors.size() > 0) {
+		if (errors.size() > 0 && wordsHaveErrors) {
 			hasErrors = true;
 		}
 	}
