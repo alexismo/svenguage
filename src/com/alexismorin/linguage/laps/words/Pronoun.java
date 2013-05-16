@@ -1,5 +1,6 @@
 package com.alexismorin.linguage.laps.words;
 
+import com.alexismorin.linguage.laps.Color;
 import com.alexismorin.linguage.laps.Sentence;
 import com.alexismorin.linguage.laps.grammar.Grammar;
 import com.alexismorin.linguage.laps.grammar.LinkTo;
@@ -12,6 +13,7 @@ public abstract class Pronoun extends Word implements Subjecting, Grammar, LinkT
 	
 	public Pronoun(String word) {
 		super(word);
+		this.wordColor = new Color(246, 142, 80);
 	}
 
 	@Override

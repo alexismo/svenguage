@@ -1,5 +1,6 @@
 package com.alexismorin.linguage.laps.words;
 
+import com.alexismorin.linguage.laps.Color;
 import com.alexismorin.linguage.laps.Sentence;
 import com.alexismorin.linguage.laps.grammar.Grammar;
 import com.alexismorin.linguage.laps.grammar.GrammaticalGender;
@@ -13,6 +14,7 @@ public class Article extends Word implements Grammar, IsArticle, LinkTo{
 	
 	public Article(String word) {
 		super(word);
+		this.wordColor = new Color(124, 182, 211);
 	}
 	
 	public boolean is_article(Word nextWord){

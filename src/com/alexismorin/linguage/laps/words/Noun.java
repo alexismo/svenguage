@@ -1,5 +1,6 @@
 package com.alexismorin.linguage.laps.words;
 
+import com.alexismorin.linguage.laps.Color;
 import com.alexismorin.linguage.laps.Sentence;
 import com.alexismorin.linguage.laps.grammar.Grammar;
 import com.alexismorin.linguage.laps.grammar.Pluralizable;
@@ -8,9 +9,10 @@ import com.alexismorin.linguage.laps.grammar.errors.NoArticleError;
 
 
 public abstract class Noun extends Word implements Grammar{
-
+	
 	public Noun(String word) {
 		super(word);
+		this.wordColor = new Color(189, 215, 76);
 	}
 
 	@Override

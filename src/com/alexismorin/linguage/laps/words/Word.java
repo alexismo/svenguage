@@ -2,6 +2,8 @@ package com.alexismorin.linguage.laps.words;
 
 import java.util.ArrayList;
 
+import com.alexismorin.linguage.laps.Color;
+import com.alexismorin.linguage.laps.Config;
 import com.alexismorin.linguage.laps.Sentence;
 import com.alexismorin.linguage.laps.grammar.errors.WordErrorList;
 
@@ -13,6 +15,7 @@ public class Word extends Tile implements Comparable<Word>{
 	private String word;
 	//public ArrayList<WordError> errors;
 	public WordErrorList errors;
+	public Color wordColor;
 
 	public Word(PVector pos, String word) {
 		super(pos);
@@ -23,6 +26,7 @@ public class Word extends Tile implements Comparable<Word>{
 	public Word(String word) {
 		this.word = word;
 		this.errors = new WordErrorList();
+		this.wordColor = new Color(Config.tileColor, Config.tileColor, Config.tileColor);
 	}
 	
 	public String getWord(){

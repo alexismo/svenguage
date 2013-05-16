@@ -120,8 +120,7 @@ public class Scene {
 									w.pos.x = linkTo.pos.x+Config.wordSize;
 									w.pos.y = linkTo.pos.y;
 								}
-							}
-							
+							}							
 						}
 					}
 				} else {
@@ -134,7 +133,9 @@ public class Scene {
 			}
 
 			// finish drawing the tile
-			parent.fill(Config.tileColor);
+			Color c = w.wordColor;
+			parent.fill(c.r, c.g, c.b);
+			//parent.fill(Config.tileColor);
 			parent.rect(w.pos.x, w.pos.y, Config.wordSize, Config.wordSize);
 
 			//draw word-specific errors
