@@ -5,6 +5,7 @@ import com.alexismorin.linguage.laps.grammar.Conjugable;
 import com.alexismorin.linguage.laps.grammar.Grammar;
 import com.alexismorin.linguage.laps.grammar.GrammaticalPerson;
 import com.alexismorin.linguage.laps.grammar.Subjecting;
+import com.alexismorin.linguage.laps.grammar.errors.NoPronounError;
 import com.alexismorin.linguage.laps.words.Verb;
 import com.alexismorin.linguage.laps.words.Word;
 
@@ -36,6 +37,7 @@ public class Äta_Word extends Verb implements Conjugable, Grammar{
 	
 	@Override
 	public boolean do_grammar(Sentence sentence, int i) {
+		this.errors.clear();
 		int gramPerson;
 		Word prevWord = sentence.getPrevWord(i);
 		String tense = sentence.findTimeIndicator();
@@ -49,6 +51,8 @@ public class Äta_Word extends Verb implements Conjugable, Grammar{
 		}
 		else{
 			this.setWord(this.conjugate(0, "infinitive"));
+			this.errors.add(new NoPronounError());
+			
 			return false;
 		}
 	}

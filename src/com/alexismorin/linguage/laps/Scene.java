@@ -19,6 +19,7 @@ public class Scene {
 	PFont fontLarge;
 	PFont fontMega;
 	Board board;
+	Sentence sentence;
 	boolean firstTouched = false;//for the intro message
 
 	public Scene(PApplet p, Board board) {
@@ -94,7 +95,7 @@ public class Scene {
 		parent.rectMode(parent.CORNER);
 		parent.textFont(font);
 
-		Sentence sentence = board.makeSentence();
+		sentence = board.makeSentence();
 		sentence.checkSentenceGrammar();
 
 		int indexInSentence = -1;
@@ -136,6 +137,7 @@ public class Scene {
 			parent.fill(Config.tileColor);
 			parent.rect(w.pos.x, w.pos.y, Config.wordSize, Config.wordSize);
 
+			//draw word-specific errors
 			if (w.errors.size() > 0) {
 				parent.fill(205, 24, 24);
 				for (int j = 0; j < w.errors.size(); j++) {
@@ -155,19 +157,22 @@ public class Scene {
 
 		// draw the errors (global sentence validation)
 		if (sentence.hasErrors) {
-			parent.fill(205, 24, 24);
+			parent.fill(205, 24, 24);//red
 			parent.textAlign(parent.CENTER);
 			// draw the error
 			for (int i = 0; i < sentence.errors.size(); i++) {
 				SentenceError e = sentence.errors.get(i);
 				parent.text(e.getMessage(), parent.width / 2,
-						(float) (parent.height * 0.60 + ((i + 1) * 30)));
+						(float) (parent.height * 0.65 + ((i + 1) * 30)));
 			}
 		}
 	}
 
 	void drawSentence(){
 		// draw the Sentence
+		if(sentence.hasErrors())
+			parent.fill(205, 24, 24);
+		
 		parent.textAlign(parent.CENTER);
 		parent.textFont(fontLarge);
 		parent.text(board.getSentenceString(), parent.width / 2,

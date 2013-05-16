@@ -111,6 +111,10 @@ public class Sentence {
 			hasErrors = true;
 		}
 	}
+	
+	public boolean hasErrors(){
+		return hasErrors;
+	}
 
 	public Word getNextWord(int i) {
 		if (i < sentenceWords.size() - 1) {
