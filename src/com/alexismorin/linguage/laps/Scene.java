@@ -70,13 +70,14 @@ public class Scene {
 				board.sentence.hasChanged = true;
 				
 				sentence = b;
-				board.sentence.checkSentenceGrammar();
-				
+				board.sentence.checkSentenceGrammar();//let the grammar resolve. count points on the next frame
+			}else{
 				//award points
 				if(!board.sentence.hasErrors()){//if no errors
 					//check for pre-existing entries
 					if(!sentencesForPoints.contains(sentence)){
 						sentencesForPoints.add(sentence);
+						
 						awardPoints();
 					}else{
 						//award no points for an existing sentence
