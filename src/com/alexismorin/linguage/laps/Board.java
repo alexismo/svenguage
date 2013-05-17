@@ -94,7 +94,7 @@ public class Board {
 		return this.sentence;
 	}
 	
-	public String getSentenceString(){
+	public String toString(){
 		return this.sentence.toString();
 	}
 

@@ -1,5 +1,9 @@
 package com.alexismorin.linguage.laps;
 
+import java.util.ArrayList;
+
+import android.util.Log;
+
 import com.alexismorin.linguage.laps.words.Word;
 import com.alexismorin.linguage.laps.grammar.Conjugable;
 import com.alexismorin.linguage.laps.grammar.Pluralizable;
@@ -18,9 +22,15 @@ public class Scene {
 	PFont font;
 	PFont fontLarge;
 	PFont fontMega;
-	Board board;
-	Sentence sentence;
+	Board board;//represents the board with all the tiles on it. Board.sentence is the sentence currently on the green line
+	
+	String sentence;
 	boolean firstTouched = false;//for the intro message
+	
+	//things for the game
+	int points = 0;
+	ArrayList<String> sentencesForPoints;
+	int pointsToWin = 14;
 
 	public Scene(PApplet p, Board board) {
 		super();
@@ -29,6 +39,9 @@ public class Scene {
 		font = parent.createFont("SansSerif", 28);
 		fontLarge = parent.createFont("Sans Serif", 48);
 		fontMega = parent.createFont("SansSerif", 80);
+		
+		sentence = "";
+		sentencesForPoints = new ArrayList<String>();
 	}
 
 	void update() {
@@ -36,12 +49,10 @@ public class Scene {
 			Word w = board.words.get(i);
 			if (w.pos == null) {// create a default position for the words.
 								// simplifies instanciation
-				w.pos = new PVector(Config.wordSize * (i + 1) + 20/*margin*/, Config.wordSize/2);//rectMode is CORNER
+				w.pos = new PVector(Config.wordSize * (i + 1) + 30/*margin*/, Config.wordSize/2);//rectMode is CORNER
 			}
 
-			if (!w.snapped) {// change the words back to singular / infinitive
-								// forms
-
+			if (!w.snapped) {// change the words back to singular / infinitive forms
 				if (w instanceof Conjugable) {
 					w.setWord(((Conjugable) w).conjugate(0, "infinitive"));
 				}
@@ -50,7 +61,19 @@ public class Scene {
 					w.setWord(((Pluralizable) w).pluralize(1));
 				}
 			}
-
+		}
+		
+		if(board.makeSentence().size() > 0){
+			String b = board.toString();
+			
+			if(!sentence.equals(b)){
+				Log.i("grammar","checking sentence grammar");
+				board.sentence.hasChanged = true;
+				//check for points
+				
+				sentence = b;
+				board.sentence.checkSentenceGrammar();
+			}
 		}
 	}
 
@@ -76,27 +99,13 @@ public class Scene {
 		
 		//if not touched yet
 		if(!firstTouched){
-			parent.fill(0, 200);
-			parent.rect(0, 0, parent.width, parent.height);
-			
-			parent.textFont(fontMega);
-			//parent.stroke(0);
-			parent.fill(240);
-			parent.text("Drag words from the gutter \nonto the green sentence line \nto score points.",
-					parent.width/40, parent.height/4);
-			
-			parent.textFont(fontLarge);
-			parent.text("Touch anywhere to start.",
-					parent.width/40, (parent.height/3)*2);
+			drawPreFirstTouch();
 		}
 	}
 
 	void drawTiles() {
 		parent.rectMode(parent.CORNER);
 		parent.textFont(font);
-
-		sentence = board.makeSentence();
-		sentence.checkSentenceGrammar();
 
 		int indexInSentence = -1;
 		for (int i = 0; i < board.words.size(); i++) {
@@ -106,7 +115,7 @@ public class Scene {
 
 			if (w.snapped) {
 				indexInSentence++;
-				if (w.do_grammar(sentence, indexInSentence)) {
+				if (w.do_grammar(board.sentence, indexInSentence)) {
 					parent.stroke(38, 133, 36);// paint it green for correct
 												// grammar
 					// draw a bezier, like a bawss
@@ -125,6 +134,7 @@ public class Scene {
 					}
 				} else {
 					parent.stroke(205, 24, 24);// paint it red for bad grammar
+					board.sentence.hasErrors = true;
 				}
 			}else{
 				if(w.errors.size() > 0){
@@ -135,7 +145,7 @@ public class Scene {
 			// finish drawing the tile
 			Color c = w.wordColor;
 			parent.fill(c.r, c.g, c.b);
-			//parent.fill(Config.tileColor);
+			//actually draw the tile
 			parent.rect(w.pos.x, w.pos.y, Config.wordSize, Config.wordSize);
 
 			//draw word-specific errors
@@ -153,16 +163,16 @@ public class Scene {
 			parent.text(w.getWord(), w.pos.x + 10, w.pos.y + Config.wordSize
 					/ 2);
 
-			parent.text(sentence.sentenceWords.size(), 10, parent.height - 50);
+			parent.text(board.sentence.sentenceWords.size(), 10, parent.height - 50);
 		}
 
 		// draw the errors (global sentence validation)
-		if (sentence.hasErrors) {
+		if (board.sentence.hasErrors()) {
 			parent.fill(205, 24, 24);//red
 			parent.textAlign(parent.CENTER);
 			// draw the error
-			for (int i = 0; i < sentence.errors.size(); i++) {
-				SentenceError e = sentence.errors.get(i);
+			for (int i = 0; i < board.sentence.errors.size(); i++) {
+				SentenceError e = board.sentence.errors.get(i);
 				parent.text(e.getMessage(), parent.width / 2,
 						(float) (parent.height * 0.65 + ((i + 1) * 30)));
 			}
@@ -171,12 +181,12 @@ public class Scene {
 
 	void drawSentence(){
 		// draw the Sentence
-		if(sentence.hasErrors())
+		if(board.sentence.hasErrors())
 			parent.fill(205, 24, 24);
 		
 		parent.textAlign(parent.CENTER);
 		parent.textFont(fontLarge);
-		parent.text(board.getSentenceString(), parent.width / 2,
+		parent.text(board.toString(), parent.width / 2,
 				parent.height - 100);
 		
 		//reset to what it was
@@ -194,6 +204,21 @@ public class Scene {
 				+ Config.wordSize / 2);
 	}
 
+	void drawPreFirstTouch(){
+		parent.fill(0, 200);
+		parent.rect(0, 0, parent.width, parent.height);
+		
+		parent.textFont(fontMega);
+		//parent.stroke(0);
+		parent.fill(240);
+		parent.text("Drag words from the gutter \nonto the green sentence line \nto score points.",
+				parent.width/40, parent.height/4);
+		
+		parent.textFont(fontLarge);
+		parent.text("Touch anywhere to start.",
+				parent.width/40, (parent.height/3)*2);
+	}
+	
 	void onMouseEvent(MouseEvent e) {
 		if(!firstTouched){
 			firstTouched = true;

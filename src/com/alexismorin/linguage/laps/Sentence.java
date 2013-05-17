@@ -15,6 +15,7 @@ import com.alexismorin.linguage.laps.words.Word;
 public class Sentence {
 	WordList sentenceWords;
 	boolean hasErrors = false;
+	boolean hasChanged = true;
 	ArrayList<SentenceError> errors;
 	String tense;
 
