@@ -8,6 +8,7 @@ import org.apache.commons.lang3.text.WordUtils;
 import com.alexismorin.linguage.laps.mouse.MouseEvent;
 import com.alexismorin.linguage.laps.words.Word;
 import com.alexismorin.linguage.laps.words.articles.En_Word;
+import com.alexismorin.linguage.laps.words.articles.Ett_Word;
 import com.alexismorin.linguage.laps.words.nouns.Tomat_Word;
 import com.alexismorin.linguage.laps.words.pronouns.Du_Word;
 import com.alexismorin.linguage.laps.words.pronouns.Jag_Word;
@@ -48,8 +49,9 @@ public class Board {
 		
 		addWord( new Äta_Word());
 		addWord( new Jag_Word());
-		addWord( new Du_Word());
+		addWord( new Ett_Word());
 		addWord( new Tomat_Word());
+		addWord( new Du_Word());
 		addWord( new En_Word());
 		
 		// French things

@@ -8,7 +8,9 @@ import processing.core.PApplet;
 public class LAPs extends PApplet {
 
 	int sceneNo;
-	Scene scene;
+	LapsScene currentScene;//touch events will be sent to this guy
+	Scene lapsScene;
+	WinScene winScene;
 	Board board;
 	
 	//for touch events;
@@ -26,8 +28,18 @@ public class LAPs extends PApplet {
 	public void draw() {
 		switch (sceneNo) {
 		case 1:
-			scene.update();
-			scene.draw();
+			lapsScene.update();
+			lapsScene.draw();
+			if(lapsScene.points >= lapsScene.pointsToWin){
+				sceneNo++;
+			}
+			break;
+		case 2:
+			if(winScene == null){
+				winScene = new WinScene(this, lapsScene.numberOfSentences);
+				currentScene = winScene;
+			}
+			break;
 		}
 	}
 
@@ -35,7 +47,8 @@ public class LAPs extends PApplet {
 		board = new Board(this);
 		board.makeWords();
 
-		scene = new Scene(this, board);
+		lapsScene = new Scene(this, board);
+		currentScene = lapsScene;
 		sceneNo = 1;
 	}
 	
@@ -48,19 +61,18 @@ public class LAPs extends PApplet {
 		pressure = event.getPressure();
 		pointerSize = event.getSize();
 		
-		
 		switch (action) {
 		case MotionEvent.ACTION_DOWN:
 			touchEvent = "DOWN";
-			scene.onMouseEvent(new MouseEvent(Config.MOUSE_PRESSED, mouseX, mouseY));
+			currentScene.onMouseEvent(new MouseEvent(Config.MOUSE_PRESSED, mouseX, mouseY));
 			break;
 		case MotionEvent.ACTION_UP:
 			touchEvent = "UP";
-			scene.onMouseEvent(new MouseEvent(Config.MOUSE_RELEASED, mouseX, mouseY));
+			currentScene.onMouseEvent(new MouseEvent(Config.MOUSE_RELEASED, mouseX, mouseY));
 			break;
 		case MotionEvent.ACTION_MOVE:
 			touchEvent = "MOVE";
-			scene.onMouseEvent(new MouseEvent(Config.MOUSE_DRAGGED, mouseX, mouseY));
+			currentScene.onMouseEvent(new MouseEvent(Config.MOUSE_DRAGGED, mouseX, mouseY));
 			break;
 		default:
 			touchEvent = "OTHER (CODE " + action + ")";  // default text on other event

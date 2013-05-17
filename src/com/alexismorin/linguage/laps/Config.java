@@ -6,6 +6,7 @@ public class Config {
 	//public static int MAPHEIGHT = 700;
 
 	public static int wordSize = 130;
+	public static int scorePointSize = 25;
 	
 	public static int tileColor = 180;//fill(180, 180, 180);
 

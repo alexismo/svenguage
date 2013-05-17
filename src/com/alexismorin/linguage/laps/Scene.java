@@ -17,7 +17,7 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PVector;
 
-public class Scene {
+public class Scene extends LapsScene{
 	PApplet parent;
 	PFont font;
 	PFont fontLarge;
@@ -29,8 +29,10 @@ public class Scene {
 	
 	//things for the game
 	int points = 0;
+	int numberOfSentences = 0;
 	ArrayList<String> sentencesForPoints;
 	int pointsToWin = 14;
+	ArrayList<ScorePoint> awardedPoints;
 
 	public Scene(PApplet p, Board board) {
 		super();
@@ -42,6 +44,7 @@ public class Scene {
 		
 		sentence = "";
 		sentencesForPoints = new ArrayList<String>();
+		awardedPoints = new ArrayList<ScorePoint>();
 	}
 
 	void update() {
@@ -207,10 +210,39 @@ public class Scene {
 	
 	void drawScore(){
 		parent.text(points+"/"+pointsToWin+" points", 20, parent.height - 50);
+		
+		//draw the points
+		if(awardedPoints.size() > 0){
+			for (int i = 0; i < awardedPoints.size(); i++) {
+				ScorePoint p = awardedPoints.get(i);
+				p.tick();
+				
+				if(!p.alive){//remove it from the array if it's made the journey
+					awardedPoints.remove(i);
+					points++;//looks more dynamic if the points are counted as they land
+				}else{
+					parent.stroke(0);
+					parent.fill(231, 185,0);//golden yellow
+					parent.ellipse(p.cPos.x, p.cPos.y, Config.scorePointSize, Config.scorePointSize);
+				}
+			}
+		}
 	}
 	
 	void awardPoints(){
-		points += board.sentence.sentenceWords.size();
+		int boardSize = board.sentence.sentenceWords.size();
+		numberOfSentences++;
+		
+		//animate points
+		PVector target = new PVector(20, parent.height - 50); 
+		for (int i = 0; i < boardSize; i++) {
+			float startX = board.sentence.sentenceWords.get(i).pos.x + Config.wordSize/2;
+			float startY = board.sentence.sentenceWords.get(i).pos.y + Config.wordSize/2;
+			
+			PVector startPos = new PVector(startX, startY);
+			//the point should go from the word to the bottom left of the screen
+			awardedPoints.add(new ScorePoint(startPos, target));
+		}
 	}
 	
 	void drawBezier(Word w1, Word w2) {
@@ -238,7 +270,7 @@ public class Scene {
 				parent.width/40, (parent.height/3)*2);
 	}
 	
-	void onMouseEvent(MouseEvent e) {
+	public void onMouseEvent(MouseEvent e) {
 		if(!firstTouched){
 			firstTouched = true;
 		}
