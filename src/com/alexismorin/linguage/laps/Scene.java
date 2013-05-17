@@ -67,12 +67,21 @@ public class Scene {
 			String b = board.toString();
 			
 			if(!sentence.equals(b)){
-				Log.i("grammar","checking sentence grammar");
 				board.sentence.hasChanged = true;
-				//check for points
 				
 				sentence = b;
 				board.sentence.checkSentenceGrammar();
+				
+				//award points
+				if(!board.sentence.hasErrors()){//if no errors
+					//check for pre-existing entries
+					if(!sentencesForPoints.contains(sentence)){
+						sentencesForPoints.add(sentence);
+						awardPoints();
+					}else{
+						//award no points for an existing sentence
+					}
+				}
 			}
 		}
 	}
@@ -83,7 +92,7 @@ public class Scene {
 		parent.noFill();
 		parent.ellipseMode(parent.CENTER);
 
-		//draw the words atop zone
+		//draw the gutter
 		parent.fill(200);
 		parent.noStroke();
 		parent.rect(0,  0, parent.width, 2*Config.wordSize);
@@ -96,6 +105,9 @@ public class Scene {
 		// draw tiles
 		drawTiles();
 		drawSentence();
+		
+		//draw the score
+		drawScore();
 		
 		//if not touched yet
 		if(!firstTouched){
@@ -115,7 +127,7 @@ public class Scene {
 
 			if (w.snapped) {
 				indexInSentence++;
-				if (w.do_grammar(board.sentence, indexInSentence)) {
+				if (!w.hasErrors()) {//if the word has no errors
 					parent.stroke(38, 133, 36);// paint it green for correct
 												// grammar
 					// draw a bezier, like a bawss
@@ -162,8 +174,6 @@ public class Scene {
 			parent.fill(0);
 			parent.text(w.getWord(), w.pos.x + 10, w.pos.y + Config.wordSize
 					/ 2);
-
-			parent.text(board.sentence.sentenceWords.size(), 10, parent.height - 50);
 		}
 
 		// draw the errors (global sentence validation)
@@ -192,6 +202,14 @@ public class Scene {
 		//reset to what it was
 		parent.textFont(font);
 		parent.textAlign(parent.LEFT);
+	}
+	
+	void drawScore(){
+		parent.text(points+"/"+pointsToWin+" points", 20, parent.height - 50);
+	}
+	
+	void awardPoints(){
+		points += board.sentence.sentenceWords.size();
 	}
 	
 	void drawBezier(Word w1, Word w2) {

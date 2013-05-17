@@ -71,7 +71,7 @@ public class Sentence {
 	public void checkSentenceGrammar() {
 		hasErrors = false;
 		errors.clear();
-		boolean hasVerb= false;
+		boolean hasVerb = false;
 		boolean wordsHaveErrors = false;
 
 		for (int i = 0; i < sentenceWords.size(); i++) {
@@ -79,7 +79,8 @@ public class Sentence {
 			if (w instanceof Grammar && w.snapped) {
 				Word prevW = getPrevWord(i);
 				Word nextW = getNextWord(i);
-
+				w.do_grammar(this, i);
+				
 				// start checking for sentence-wide errors
 				if (i == 0) {// for starting word
 					if (w instanceof Pronoun || w instanceof TimeIndicator ) {
@@ -104,11 +105,12 @@ public class Sentence {
 		
 		if (!hasVerb) {
 			NoVerbInSentenceError e = new NoVerbInSentenceError();
-			if (!errors.contains(e))
+			if (!errors.contains(e))//we don't want duplicate errors
 				errors.add(e);
 		}
 
-		if (errors.size() > 0 && wordsHaveErrors) {
+		//if either any of the words has an error or the sentence has an error
+		if (errors.size() > 0 || wordsHaveErrors) {
 			hasErrors = true;
 		}
 	}
