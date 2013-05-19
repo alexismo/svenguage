@@ -30,7 +30,7 @@ public class FirstLaunchActivity extends LinguageActivity {
 			public void run(){
 				gotoNextView();
 			}
-		},2000, 99000);
+		},4000, 99000);
 	}
 	
 	private void gotoNextView(){

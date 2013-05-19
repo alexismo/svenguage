@@ -16,7 +16,6 @@ public class WordsRestaurant1 extends ArrayList<VocabularyListItem> {
 		this.add(new VocabWord("ett bord"));
 		this.add(new VocabWord("en bar"));
 		this.add(new VocabWord("en servitör"));
-		this.add(new VocabWord("en vaktmästare"));
 		this.add(new VocabWord("en meny"));
 		this.add(new VocabWord("en lunch"));
 		this.add(new VocabWord("en middag"));
