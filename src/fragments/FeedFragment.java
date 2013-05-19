@@ -1,6 +1,5 @@
 package fragments;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.alexismorin.linguage.laps.LAPs;
 import com.alexismorin.linguage.se.sv.FirstLaunchActivity;
 import com.alexismorin.linguage.se.sv.R;
@@ -17,7 +16,8 @@ import com.fima.cardsui.views.CardUI;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.ListFragment;
+import android.app.Fragment;
+import android.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -27,7 +27,7 @@ import android.webkit.WebView.FindListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FeedFragment extends SherlockFragment {
+public class FeedFragment extends Fragment {
 
 	protected ListFragment mFrag;
 	protected CardUI mCardView;

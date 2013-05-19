@@ -15,4 +15,13 @@
         <item>I\'m pretty good</item>
         <item>--I\'m not sure--</item>
     </string-array>
+    
+    <string-array name="drawer_menu_items">
+        <item>Challenges</item>
+        <item>My Swedish</item>
+        <item>Topics</item>
+        <item>Dictionary</item>
+        <item>Watch &amp; Read</item>
+        <item>Settings</item>
+    </string-array>
 </resources>

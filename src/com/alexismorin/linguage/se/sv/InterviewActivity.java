@@ -48,8 +48,10 @@ public class InterviewActivity extends LinguageActivity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent frameIntent = new Intent(InterviewActivity.this, FrameActivity.class);
-				startActivity(frameIntent);
+				//Intent frameIntent = new Intent(InterviewActivity.this, FrameActivity.class);
+				//startActivity(frameIntent);
+				Intent drawerIntent = new Intent(InterviewActivity.this, DrawerActivity.class);
+				startActivity(drawerIntent);
 				finish();
 			}
 		});

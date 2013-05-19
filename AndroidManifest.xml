@@ -3,7 +3,9 @@
     package="com.alexismorin.linguage.se.sv"
     android:versionCode="1"
     android:versionName="1.0" >
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -38,11 +40,6 @@ s
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.alexismorin.linguage.se.sv.FrameActivity"
-            android:label="@string/title_activity_feed"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name="com.alexismorin.linguage.laps.LAPs"
             android:label="@string/title_activity_LAPs"
             android:screenOrientation="landscape" >
@@ -63,20 +60,30 @@ s
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.alexismorin.linguage.se.sv.FrameActivity" />
+                android:value="com.alexismorin.linguage.se.sv.DrawerActivity" />
         </activity>
         <activity
             android:name="com.alexismorin.linguage.se.sv.VideoActivity"
             android:label="@string/title_activity_video"
-            android:parentActivityName="com.alexismorin.linguage.se.sv.FrameActivity" >
+            android:parentActivityName="com.alexismorin.linguage.se.sv.DrawerActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.alexismorin.linguage.se.sv.FrameActivity" />
+                android:value="com.alexismorin.linguage.se.sv.DrawerActivity" />
+        </activity>
+        <activity
+            android:name="com.alexismorin.linguage.se.sv.DrawerActivity"
+            android:label="@string/title_activity_drawer" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

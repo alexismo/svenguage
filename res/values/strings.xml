@@ -26,6 +26,8 @@
     <string name="challenge_icon">Challenge Icon</string>
     <string name="title_activity_vocabulary">VocabularyActivity</string>
     <string name="friend_challenge_title">Charles watched…</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
     <!-- Vocabulary Activity -->
     <string name="vocab_words">Words</string>
     <string name="vocab_sentences">Sentences</string>
@@ -61,5 +63,6 @@ Täckta av vägens damm där minnena gror\n
 Det känns som jag vandrar fram i utnöta skor\n
 Täckta av vägens damm där minnena gror\n
 Där minnena gror</string>
+    <string name="title_activity_drawer">DrawerActivity</string>
 
 </resources>
