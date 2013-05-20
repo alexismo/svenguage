@@ -3,14 +3,20 @@ package com.alexismorin.linguage.util;
 public class VocabWord implements VocabularyListItem {
 
 	String word;
+	String translation;
 	
 	public String getWord() {
 		return word;
 	}
+	
+	public String getTranslation(){
+		return translation;
+	}
 
-	public VocabWord(String word) {
+	public VocabWord(String word, String translation) {
 		super();
 		this.word = word;
+		this.translation = translation;
 	}
 
 	@Override

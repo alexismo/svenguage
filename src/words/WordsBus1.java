@@ -11,13 +11,12 @@ public class WordsBus1 extends ArrayList<VocabularyListItem> {
 	public WordsBus1(){
 		this.add(new VocabFlavorImage(R.drawable.bus));
 		
-		this.add(new VocabWord("en buss"));
-		this.add(new VocabWord("en biljett"));
-		this.add(new VocabWord("en chaufför"));
-		this.add(new VocabWord("en busshållplats"));
-		this.add(new VocabWord("ungdomsbiljett"));
-		this.add(new VocabWord("vuxenbiljett"));
-		this.add(new VocabWord("att köpa en biljett"));
-		this.add(new VocabWord("att åka buss"));
+		this.add(new VocabWord("en buss", "a bus"));
+		this.add(new VocabWord("en biljett", "a ticket"));
+		this.add(new VocabWord("en ungdomsbiljett", "a youth ticket"));
+		this.add(new VocabWord("en chaufför", "a driver"));
+		this.add(new VocabWord("en busshållplats", "a bus stop"));
+		this.add(new VocabWord("att köpa en biljett", "to buy a ticket"));
+		this.add(new VocabWord("att åka buss", "to ride the bus"));
 	}
 }

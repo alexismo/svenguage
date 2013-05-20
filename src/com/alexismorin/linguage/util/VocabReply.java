@@ -13,7 +13,7 @@ public class VocabReply extends VocabWord {
 	}
 
 	public VocabReply(String word, int side, int conversationalistDrawable) {
-		super(word);
+		super(word, "");
 		this.side = side;
 		this.conversationalistDrawable = conversationalistDrawable;
 	}

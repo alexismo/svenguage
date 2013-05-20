@@ -2,7 +2,6 @@ package com.alexismorin.linguage.se.sv;
 
 
 import com.alexismorin.linguage.laps.LAPs;
-import com.example.android.navigationdrawerexample.R;
 
 import fragments.FeedFragment;
 

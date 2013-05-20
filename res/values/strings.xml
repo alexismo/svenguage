@@ -36,6 +36,10 @@
     <string name="reply_left">Reply Left</string>
     <string name="reply_right">Reply Right</string>
     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <!-- definition fragment -->
+    <string name="skanska">Skånska</string>
+    <string name="stockholmska">Stockholmska</string>
+    <string name="norrlandska">Norrlandska</string>
     <!-- video activity -->
     <string name="video_captions">Det känns som jag vandrar fram i utnöta skor\n
 Täckta av vägens damm där minnena gror\n

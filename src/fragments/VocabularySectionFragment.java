@@ -19,13 +19,16 @@ import com.alexismorin.linguage.util.VocabularyListItem;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class VocabularySectionFragment extends Fragment {
+public class VocabularySectionFragment extends Fragment implements DefinitionFragment.OnSoundButtonClicked{
 	/**
 	 * The fragment argument representing the section number for this
 	 * fragment.
@@ -94,6 +97,28 @@ public class VocabularySectionFragment extends Fragment {
 		vocabAdapter = new VocabularyAdapter(getActivity().getApplicationContext(), wordsList);
 		vocabListView.setAdapter(vocabAdapter);
 		
+		vocabListView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+				VocabularyListItem word = wordsList.get(position);
+				if(word instanceof VocabWord){
+					Log.i("Word", ((VocabWord) word).getWord());
+					showDefinitionDialog((VocabWord)word);
+				}
+			}
+		});
+		
 		return rootView;
+	}
+	
+	public void showDefinitionDialog(VocabWord clickedWord){
+		DefinitionFragment definition = new DefinitionFragment();
+		definition.setWord(clickedWord);
+		definition.show(getFragmentManager(), "definition");
+	}
+
+	@Override
+	public void onSoundButtonClicked(String accent) {
+		//play a sound, yo
+		Log.i("sound",accent);
 	}
 }

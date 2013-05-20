@@ -5,9 +5,11 @@ import java.util.Locale;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.*;
 
+import fragments.DefinitionFragment;
 import fragments.VocabularySectionFragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +24,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 
 
-public class VocabularyActivity extends SherlockFragmentActivity {
+public class VocabularyActivity extends SherlockFragmentActivity implements DefinitionFragment.OnSoundButtonClicked{
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -120,5 +122,11 @@ public class VocabularyActivity extends SherlockFragmentActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onSoundButtonClicked(String accent) {
+		//play a sound, yo
+		Log.i("sound",accent);
 	}
 }
