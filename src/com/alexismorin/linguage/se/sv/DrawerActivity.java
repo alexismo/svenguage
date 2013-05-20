@@ -4,6 +4,7 @@ package com.alexismorin.linguage.se.sv;
 import com.alexismorin.linguage.laps.LAPs;
 
 import fragments.FeedFragment;
+import fragments.MySwedishFragment;
 
 import android.app.Activity;
 import android.content.Context;
@@ -77,7 +78,7 @@ public class DrawerActivity extends Activity implements FeedFragment.OnChallenge
 		//set the adapter for the list view
 		mDrawerList.setAdapter(adapter);
 		//Set the list's click listener
-		//mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 		
 		//get the main feed in
 		Fragment feedFragment = new FeedFragment();
@@ -85,7 +86,6 @@ public class DrawerActivity extends Activity implements FeedFragment.OnChallenge
 		//insert the fragment
 		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager.beginTransaction().replace(R.id.content_frame, feedFragment).commit();
-		
 	}
 	
 	private class DrawerItemClickListener implements ListView.OnItemClickListener{
@@ -98,7 +98,23 @@ public class DrawerActivity extends Activity implements FeedFragment.OnChallenge
 	}
 	
 	private void selectItem(int position){
+		Fragment frag;
+		FragmentManager fragmentManager = getFragmentManager();
+		switch (position) {
+		case 0://Feed
+			frag = new FeedFragment();
+			fragmentManager.beginTransaction().replace(R.id.content_frame, frag).commit();
+			break;
+
+		case 1://My Swedish
+			frag = new MySwedishFragment();
+			fragmentManager.beginTransaction().replace(R.id.content_frame, frag).commit();
+		default:
+			
+			break;
+		}
 		
+		mDrawerLayout.closeDrawers();
 	}
 	
 	@Override
