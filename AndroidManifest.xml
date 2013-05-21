@@ -51,7 +51,8 @@ s
         </activity>
         <activity
             android:name="com.alexismorin.linguage.se.sv.VocabularyActivity"
-            android:label="@string/title_activity_vocabulary" >
+            android:label="@string/title_activity_vocabulary"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -78,7 +79,8 @@ s
         </activity>
         <activity
             android:name="com.alexismorin.linguage.se.sv.DrawerActivity"
-            android:label="@string/title_activity_drawer" >
+            android:label="@string/title_activity_drawer"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

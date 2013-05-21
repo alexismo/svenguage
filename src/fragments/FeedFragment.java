@@ -80,7 +80,7 @@ public class FeedFragment extends Fragment {
 		mCardView.addCard(restoCard);
 		
 		mCardView.addCard(new ChallengeCard("Tag a photograph", "(Tagga en bild)", R.drawable.challenge_photo));
-		mCardView.addCard(new ChallengeCard("Learn with friends", "(Lär dig med kompisar)", R.drawable.challenge_facebook));
+		mCardView.addCard(new ChallengeCard("Learn with friends", "(Lär dig med kompisar)", R.drawable.challenge_google));
 		
 		FriendChallengeCard melodifestivalen = new FriendChallengeCard("Charles watched…", "Melodifestivalen 1979", R.drawable.friend, R.drawable.friend_challenge_icon);
 		melodifestivalen.setOnClickListener(new OnClickListener() {
