@@ -33,7 +33,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/LinguageTheme" >
         </activity>
-s
         <activity
             android:name="com.alexismorin.linguage.se.sv.InterviewActivity"
             android:label="@string/title_activity_interview"
