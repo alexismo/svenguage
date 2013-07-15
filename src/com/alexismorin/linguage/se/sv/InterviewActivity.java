@@ -18,9 +18,9 @@ public class InterviewActivity extends LinguageActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		getSupportActionBar().setDisplayShowHomeEnabled(false);
-		getSupportActionBar().setDisplayShowTitleEnabled(false);
-		getSupportActionBar().hide();
+		getActionBar().setDisplayShowHomeEnabled(false);
+		getActionBar().setDisplayShowTitleEnabled(false);
+		getActionBar().hide();
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_interview);

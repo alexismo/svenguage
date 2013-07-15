@@ -3,7 +3,6 @@ package com.alexismorin.linguage.se.sv;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.actionbarsherlock.app.SherlockActivity;
 import com.alexismorin.linguage.util.LinguageActivity;
 
 import android.os.Bundle;
@@ -18,9 +17,9 @@ public class FirstLaunchActivity extends LinguageActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		getSupportActionBar().setDisplayShowHomeEnabled(false);
-		getSupportActionBar().setDisplayShowTitleEnabled(false);
-		getSupportActionBar().hide();
+		getActionBar().setDisplayShowHomeEnabled(false);
+		getActionBar().setDisplayShowTitleEnabled(false);
+		getActionBar().hide();
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_first_launch);

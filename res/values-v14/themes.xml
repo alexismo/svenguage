@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <style name="Theme.SvActionBar" parent="Theme.Sherlock.Light">
-        <item name="actionBarStyle">@style/Widget.SVActionBar</item>
+    <style name="Theme.SvActionBar" parent="android:style/Widget.Holo.Light">
         <item name="android:actionBarStyle">@style/Widget.SVActionBar</item>
     </style>
     

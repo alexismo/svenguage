@@ -2,9 +2,6 @@ package com.alexismorin.linguage.se.sv;
 
 import java.util.Locale;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.*;
-
 import fragments.DefinitionFragment;
 import fragments.VocabularySectionFragment;
 
@@ -12,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -19,12 +17,13 @@ import android.widget.TextView;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 
 
-public class VocabularyActivity extends SherlockFragmentActivity implements DefinitionFragment.OnSoundButtonClicked{
+public class VocabularyActivity extends FragmentActivity implements DefinitionFragment.OnSoundButtonClicked{
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -44,8 +43,8 @@ public class VocabularyActivity extends SherlockFragmentActivity implements Defi
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		getSupportActionBar().setHomeButtonEnabled(true);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_vocabulary);
 		

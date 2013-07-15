@@ -1,13 +1,11 @@
 package com.alexismorin.linguage.util;
 
-import com.actionbarsherlock.app.SherlockActivity;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 
-public class LinguageActivity extends SherlockActivity {
+public class LinguageActivity extends Activity {
 
 	public void showDemoDialog(String message){
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
