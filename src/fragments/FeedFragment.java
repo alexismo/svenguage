@@ -1,5 +1,7 @@
 package fragments;
 
+import java.util.ArrayList;
+
 import com.alexismorin.linguage.laps.LAPs;
 import com.alexismorin.linguage.se.sv.FirstLaunchActivity;
 import com.alexismorin.linguage.se.sv.R;
@@ -9,6 +11,7 @@ import com.alexismorin.linguage.se.sv.R.id;
 import com.alexismorin.linguage.se.sv.R.layout;
 import com.alexismorin.linguage.util.ChallengeCard;
 import com.alexismorin.linguage.util.FriendChallengeCard;
+import com.alexismorin.linguage.util.NowArrayAdapter;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
 
@@ -24,6 +27,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.webkit.WebView.FindListener;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +36,53 @@ public class FeedFragment extends Fragment {
 	protected ListFragment mFrag;
 	protected CardUI mCardView;
 	OnChallengeCardSelectedListener mListener;
+	//new card listview things
+	ArrayList<String> cardsList;
+	NowArrayAdapter nowArrayAdapter;
+	ListView list;
 	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.fragment_feed, container, false);
+		list = (ListView) view.findViewById(R.id.challengeCards);
+		list.setDivider(null);
+		list.setDividerHeight(0);
+		
+		cardsList = new ArrayList<String>();
+		cardsList.add("Taking the bus");
+		cardsList.add("Build a sentence");
+		cardsList.add("Ordering at the restaurant");
+		cardsList.add("Tag a photograph");
+		cardsList.add("Learn with friends");
+		cardsList.add("Taking the bus");
+		cardsList.add("Build a sentence");
+		cardsList.add("Ordering at the restaurant");
+		cardsList.add("Tag a photograph");
+		cardsList.add("Learn with friends");
+		cardsList.add("Taking the bus");
+		cardsList.add("Build a sentence");
+		cardsList.add("Ordering at the restaurant");
+		cardsList.add("Tag a photograph");
+		cardsList.add("Learn with friends");
+		cardsList.add("Taking the bus");
+		cardsList.add("Build a sentence");
+		cardsList.add("Ordering at the restaurant");
+		cardsList.add("Tag a photograph");
+		cardsList.add("Learn with friends");
+		cardsList.add("Taking the bus");
+		cardsList.add("Build a sentence");
+		cardsList.add("Ordering at the restaurant");
+		cardsList.add("Tag a photograph");
+		cardsList.add("Learn with friends");
+		
+		nowArrayAdapter = new NowArrayAdapter(getActivity(), R.id.challengeCards, cardsList);
+		
+		list.setAdapter(nowArrayAdapter);
+		
+		return view;
+	}
+	
+	/*
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_feed, container, false);
@@ -99,6 +149,7 @@ public class FeedFragment extends Fragment {
 		
 		return view;
 	}
+	*/
 	
 	//Container Activity must implement this interface
 	public interface OnChallengeCardSelectedListener{
