@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/LinguageTheme" >
         <activity
-            android:name="com.alexismorin.linguage.se.sv.FirstLaunchActivity"
+            android:name="com.alexismorin.linguage.se.sv.DrawerActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -25,6 +25,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.alexismorin.linguage.se.sv.FirstLaunchActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.alexismorin.linguage.se.sv.SwedenActivity"
@@ -42,49 +47,22 @@
             android:name="com.alexismorin.linguage.laps.LAPs"
             android:label="@string/title_activity_LAPs"
             android:screenOrientation="landscape" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.alexismorin.linguage.se.sv.VocabularyActivity"
             android:label="@string/title_activity_vocabulary"
             android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.alexismorin.linguage.se.sv.DrawerActivity" />
         </activity>
         <activity
             android:name="com.alexismorin.linguage.se.sv.VideoActivity"
-            android:label="@string/title_activity_video"
-            android:parentActivityName="com.alexismorin.linguage.se.sv.DrawerActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:label="@string/title_activity_video" >
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.alexismorin.linguage.se.sv.DrawerActivity" />
-        </activity>
-        <activity
-            android:name="com.alexismorin.linguage.se.sv.DrawerActivity"
-            android:label="@string/title_activity_drawer"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
