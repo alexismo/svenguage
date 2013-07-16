@@ -44,11 +44,11 @@ public class VocabularySectionFragment extends Fragment implements DefinitionFra
 		
 	}
 	
-	public VocabularySectionFragment(int i, String topic) {
+	public VocabularySectionFragment(int i, int topic) {
 		if(wordsList == null){
 			wordsList = new ArrayList<VocabularyListItem>();//instantiate the thing
 			
-			if(topic.equals("restaurant")){
+			if(topic == 3){
 				switch (i) {
 				case 1:
 					wordsList = new WordsRestaurant1();
@@ -79,7 +79,7 @@ public class VocabularySectionFragment extends Fragment implements DefinitionFra
 					break;
 				}
 			}
-			if(topic.equals("bus")){
+			if(topic == 1){
 				wordsList = new WordsBus1();
 			}
 			

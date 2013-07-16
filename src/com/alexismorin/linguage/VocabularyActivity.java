@@ -44,7 +44,7 @@ public class VocabularyActivity extends FragmentActivity implements DefinitionFr
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
-	String topic;
+	int topic;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +54,7 @@ public class VocabularyActivity extends FragmentActivity implements DefinitionFr
 		setContentView(R.layout.activity_vocabulary);
 		
 		if(getIntent().hasExtra("activityTopic"))
-			topic = getIntent().getExtras().getString("activityTopic");
-		else
-			topic = "restaurant";
+			topic = getIntent().getExtras().getInt("activityTopic");
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.

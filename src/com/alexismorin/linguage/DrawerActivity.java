@@ -35,6 +35,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+/**
+ * 
+ * @author alexis
+ * This activity is the main feed. 
+ * It calls upon various fragments to populate it's right view.
+ */
 public class DrawerActivity extends Activity implements FeedFragment.OnChallengeCardSelectedListener{
 
 	private DrawerLayout mDrawerLayout;
@@ -149,52 +155,15 @@ public class DrawerActivity extends Activity implements FeedFragment.OnChallenge
     }
 	
 	@Override
-	public void onChallengeCardSelected(Bundle challengeCardBundle) {
+	public void onTopicCardSelected(Bundle topicCardBundle) {
 		Log.i("challenge clicked", "gonna start some crazy b*shit");
 		
-		String startThis = challengeCardBundle.getString("startActivity");
-		if(startThis.contains("LAPs")){
-			Intent lapsAct = new Intent(this, LAPs.class);
-			startActivity(lapsAct, challengeCardBundle);
-		}
+		int topicId = topicCardBundle.getInt("topicId");
 		
-		if(startThis.contains("VocabularyActivity")){
-			String topic = challengeCardBundle.getString("activityTopic");
-			
-			Intent vocabAct = new Intent(this, VocabularyActivity.class);
-			vocabAct.putExtra("activityTopic", topic);
-			/*
-			Bundle vocabB = vocabAct.getExtras();
-			vocabB.putString("activityTopic", topic);
-			vocabAct.putExtras(vocabB);
-			*/
-			
-			startActivity(vocabAct);
-		}
-		
-		if(startThis.contains("VideoActivity")){
-			Intent videoIntent = new Intent(this, VideoActivity.class);
-			startActivity(videoIntent, challengeCardBundle);
-		}
-		
-		/*
-		 * ==CAN ONLY START LAPs FOR NOW
-		 * String startThis = bundle.getString("startActivity");
-		Class cls;
-		try {
-			cls = Class.forName(startThis);
-			if(cls.isInstance(Activity.class) || cls.isInstance(PApplet.class)){
-				//Activity a = (Activity) cls.newInstance();
-				Intent challengeAct = new Intent(FrameActivity.this, cls.getClass());
-				startActivity(challengeAct);
-			}else{
-				Log.e("class cast exception", "cls is a "+cls.getName());
-			}
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		//start the vocabulary activity
+		Intent vocabAct = new Intent(this, VocabularyActivity.class);
+		vocabAct.putExtra("activityTopic", topicId);
+		startActivity(vocabAct);
 	}
 	
 	private class SampleItem {
