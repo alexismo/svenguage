@@ -8,8 +8,8 @@ import words.WordsRestaurant1;
 import words.WordsRestaurant2;
 import words.WordsRestaurant3;
 
+import com.alexismorin.linguage.VocabularyActivity;
 import com.alexismorin.linguage.se.sv.R;
-import com.alexismorin.linguage.se.sv.VocabularyActivity;
 import com.alexismorin.linguage.util.VocabFlavorImage;
 import com.alexismorin.linguage.util.VocabReply;
 import com.alexismorin.linguage.util.VocabWord;

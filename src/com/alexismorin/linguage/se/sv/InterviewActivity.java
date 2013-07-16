@@ -1,5 +1,6 @@
 package com.alexismorin.linguage.se.sv;
 
+import com.alexismorin.linguage.DrawerActivity;
 import com.alexismorin.linguage.util.LinguageActivity;
 
 import fragments.FeedFragment;

@@ -1,6 +1,11 @@
-package com.alexismorin.linguage.se.sv;
+package com.alexismorin.linguage;
 
 import java.util.Locale;
+
+import com.alexismorin.linguage.se.sv.R;
+import com.alexismorin.linguage.se.sv.R.id;
+import com.alexismorin.linguage.se.sv.R.layout;
+import com.alexismorin.linguage.se.sv.R.string;
 
 import fragments.DefinitionFragment;
 import fragments.VocabularySectionFragment;

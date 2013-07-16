@@ -2,19 +2,15 @@ package fragments;
 
 import java.util.ArrayList;
 
+import com.alexismorin.linguage.FirstLaunchActivity;
 import com.alexismorin.linguage.laps.LAPs;
-import com.alexismorin.linguage.se.sv.FirstLaunchActivity;
 import com.alexismorin.linguage.se.sv.R;
 import com.alexismorin.linguage.se.sv.R.dimen;
 import com.alexismorin.linguage.se.sv.R.drawable;
 import com.alexismorin.linguage.se.sv.R.id;
 import com.alexismorin.linguage.se.sv.R.layout;
-import com.alexismorin.linguage.util.ChallengeCard;
-import com.alexismorin.linguage.util.FriendChallengeCard;
-import com.alexismorin.linguage.util.NowArrayAdapter;
-import com.fima.cardsui.objects.CardStack;
-import com.fima.cardsui.views.CardUI;
-
+import com.alexismorin.linguage.util.TopicCardAdapter;
+import com.alexismorin.linguage.util.TopicCard;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -34,11 +30,10 @@ import android.widget.Toast;
 public class FeedFragment extends Fragment {
 
 	protected ListFragment mFrag;
-	protected CardUI mCardView;
 	OnChallengeCardSelectedListener mListener;
 	//new card listview things
-	ArrayList<String> cardsList;
-	NowArrayAdapter nowArrayAdapter;
+	ArrayList<TopicCard> cardsList;
+	TopicCardAdapter nowArrayAdapter;
 	ListView list;
 	
 	@Override
@@ -48,34 +43,19 @@ public class FeedFragment extends Fragment {
 		list.setDivider(null);
 		list.setDividerHeight(0);
 		
-		cardsList = new ArrayList<String>();
-		cardsList.add("Taking the bus");
-		cardsList.add("Build a sentence");
-		cardsList.add("Ordering at the restaurant");
-		cardsList.add("Tag a photograph");
-		cardsList.add("Learn with friends");
-		cardsList.add("Taking the bus");
-		cardsList.add("Build a sentence");
-		cardsList.add("Ordering at the restaurant");
-		cardsList.add("Tag a photograph");
-		cardsList.add("Learn with friends");
-		cardsList.add("Taking the bus");
-		cardsList.add("Build a sentence");
-		cardsList.add("Ordering at the restaurant");
-		cardsList.add("Tag a photograph");
-		cardsList.add("Learn with friends");
-		cardsList.add("Taking the bus");
-		cardsList.add("Build a sentence");
-		cardsList.add("Ordering at the restaurant");
-		cardsList.add("Tag a photograph");
-		cardsList.add("Learn with friends");
-		cardsList.add("Taking the bus");
-		cardsList.add("Build a sentence");
-		cardsList.add("Ordering at the restaurant");
-		cardsList.add("Tag a photograph");
-		cardsList.add("Learn with friends");
+		cardsList = new ArrayList<TopicCard>();
+		cardsList.add(new TopicCard("Prendre l'autobus", "Taking the bus", R.drawable.challenge_bus));
+		cardsList.add(new TopicCard("Construis une phrase", "Build a sentence", R.drawable.challenge_order));
+		cardsList.add(new TopicCard("Commander au resto", "Ordering at the restuarant", R.drawable.challenge_conversation));
+		cardsList.add(new TopicCard("Taguer une photo", "Tag a photograph", R.drawable.challenge_photo));
+		cardsList.add(new TopicCard("Apprendre avec des amis", "Learn with friends", R.drawable.challenge_google));
+		cardsList.add(new TopicCard("Prendre l'autobus", "Taking the bus", R.drawable.challenge_bus));
+		cardsList.add(new TopicCard("Construis une phrase", "Build a sentence", R.drawable.challenge_order));
+		cardsList.add(new TopicCard("Commander au resto", "Ordering at the restuarant", R.drawable.challenge_conversation));
+		cardsList.add(new TopicCard("Taguer une photo", "Tag a photograph", R.drawable.challenge_photo));
+		cardsList.add(new TopicCard("Apprendre avec des amis", "Learn with friends", R.drawable.challenge_google));
 		
-		nowArrayAdapter = new NowArrayAdapter(getActivity(), R.id.challengeCards, cardsList);
+		nowArrayAdapter = new TopicCardAdapter(getActivity(), R.id.challengeCards, cardsList);
 		
 		list.setAdapter(nowArrayAdapter);
 		

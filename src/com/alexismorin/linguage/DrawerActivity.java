@@ -1,7 +1,13 @@
-package com.alexismorin.linguage.se.sv;
+package com.alexismorin.linguage;
 
 
 import com.alexismorin.linguage.laps.LAPs;
+import com.alexismorin.linguage.se.sv.R;
+import com.alexismorin.linguage.se.sv.VideoActivity;
+import com.alexismorin.linguage.se.sv.R.drawable;
+import com.alexismorin.linguage.se.sv.R.id;
+import com.alexismorin.linguage.se.sv.R.layout;
+import com.alexismorin.linguage.se.sv.R.string;
 
 import fragments.FeedFragment;
 import fragments.MySwedishFragment;

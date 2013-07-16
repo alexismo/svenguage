@@ -1,8 +1,11 @@
-package com.alexismorin.linguage.se.sv;
+package com.alexismorin.linguage;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.alexismorin.linguage.se.sv.R;
+import com.alexismorin.linguage.se.sv.SwedenActivity;
+import com.alexismorin.linguage.se.sv.R.layout;
 import com.alexismorin.linguage.util.LinguageActivity;
 
 import android.os.Bundle;
