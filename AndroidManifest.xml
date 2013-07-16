@@ -54,7 +54,7 @@
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.alexismorin.linguage.se.sv.DrawerActivity" />
+                android:value="com.alexismorin.linguage.DrawerActivity" />
         </activity>
         <activity
             android:name="com.alexismorin.linguage.se.sv.VideoActivity"
@@ -62,7 +62,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.alexismorin.linguage.se.sv.DrawerActivity" />
+                android:value="com.alexismorin.linguage.DrawerActivity" />
         </activity>
     </application>
 

@@ -34,22 +34,45 @@ public class VocabularySectionFragment extends Fragment implements DefinitionFra
 	 * fragment.
 	 */
 	public static final String ARG_SECTION_NUMBER = "section_number";
+	public static final String ARG_TOPIC_ID = 		"topic_id";
 	
 	public ListView vocabListView;
 	private List<VocabularyListItem> wordsList;
 	private VocabularyAdapter vocabAdapter;
-
 	
 	public VocabularySectionFragment(){
-		
 	}
 	
-	public VocabularySectionFragment(int i, int topic) {
+	public static VocabularySectionFragment newInstance(int position, int topic) {
+		//creating the fragment like the prevents the loss of initial parameters during ConfigurationChange
+		//see: http://stackoverflow.com/questions/16756730/how-to-make-a-constructor-for-a-fragment
+		VocabularySectionFragment frag=new VocabularySectionFragment();
+	    Bundle args=new Bundle();
+
+	    args.putInt(ARG_SECTION_NUMBER, position);
+	    args.putInt(ARG_TOPIC_ID, topic);
+	    
+	    frag.setArguments(args);
+
+	    return(frag);
+	  }
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View rootView = inflater.inflate(
+				R.layout.fragment_vocabulary, container, false);
+		
+		int topic, position;
+		Bundle args = getArguments();
+		position = args.getInt(ARG_SECTION_NUMBER);
+		topic = args.getInt(ARG_TOPIC_ID);
+		
 		if(wordsList == null){
 			wordsList = new ArrayList<VocabularyListItem>();//instantiate the thing
 			
 			if(topic == 3){
-				switch (i) {
+				switch (position) {
 				case 1:
 					wordsList = new WordsRestaurant1();
 					break;
@@ -61,36 +84,14 @@ public class VocabularySectionFragment extends Fragment implements DefinitionFra
 					wordsList = new WordsRestaurant3();
 					
 					break;
-					/*
-					wordsList.add(new VocabFlavorImage(R.drawable.baby));
-					
-					wordsList.add(new VocabWord("Hej"));
-					wordsList.add(new VocabWord("Hejsan (slang)"));
-					wordsList.add(new VocabWord("Hallå"));
-					wordsList.add(new VocabWord("Tjenare"));
-					wordsList.add(new VocabWord("Tjena"));
-					wordsList.add(new VocabWord("Tja (slang)"));
-					wordsList.add(new VocabWord("God morgon"));
-					wordsList.add(new VocabWord("God kväll"));
-					
-					break;*/
 					
 				default:
 					break;
 				}
-			}
-			if(topic == 1){
+			}if(topic == 1){
 				wordsList = new WordsBus1();
 			}
-			
 		}
-	}
-
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(
-				R.layout.fragment_vocabulary, container, false);
 		
 		vocabListView = (ListView) rootView.findViewById(R.id.vocab_list_view);
 		
