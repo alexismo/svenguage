@@ -1,15 +1,15 @@
 package com.alexismorin.linguage.util;
 
 public class VocabFlavorImage implements VocabularyListItem{
-	int imageResource;
+	String imageURL;
 
-	public int getImageResource() {
-		return imageResource;
+	public String getImageResource() {
+		return imageURL;
 	}
 
-	public VocabFlavorImage(int imageResource) {
+	public VocabFlavorImage(String imageURL) {
 		super();
-		this.imageResource = imageResource;
+		this.imageURL = imageURL;
 	}
 
 	@Override

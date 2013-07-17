@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:scaleType="centerCrop"
-        android:contentDescription="@string/vocab_flavor"
-        android:src="@drawable/baby" />
+        android:contentDescription="@string/vocab_flavor" />
 
 </LinearLayout>

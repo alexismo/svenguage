@@ -9,7 +9,7 @@ import com.alexismorin.linguage.util.VocabularyListItem;
 
 public class WordsBus1 extends ArrayList<VocabularyListItem> {
 	public WordsBus1(){
-		this.add(new VocabFlavorImage(R.drawable.bus));
+		this.add(new VocabFlavorImage("http://alexismorin.com/svenguage/bus.jpg"));
 		
 		this.add(new VocabWord("en buss", "a bus"));
 		this.add(new VocabWord("en biljett", "a ticket"));

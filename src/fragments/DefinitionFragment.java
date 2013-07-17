@@ -41,14 +41,8 @@ public class DefinitionFragment extends DialogFragment {
 					@Override
 					public void onClick(View v) {
 						switch (v.getId()) {
-						case R.id.speak_skanska:
-							mListener.onSoundButtonClicked("skanska");
-							break;
-						case R.id.speak_stockholmska:
+						case R.id.speak_button:
 							mListener.onSoundButtonClicked("stockholmska");
-							break;
-						case R.id.speak_norrlandska:
-							mListener.onSoundButtonClicked("norrlandska");
 							break;
 		
 						default:

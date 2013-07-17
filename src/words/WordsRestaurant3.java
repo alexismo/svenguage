@@ -17,7 +17,7 @@ public class WordsRestaurant3 extends ArrayList<VocabularyListItem> {
 		int f = R.drawable.friend;
 		int w = R.drawable.waiter;
 		
-		this.add(new VocabFlavorImage(R.drawable.restaurant3));
+		this.add(new VocabFlavorImage("http://alexismorin.com/svenguage/restaurant3.jpg"));
 		
 		this.add(new VocabReply("Tja!", 0, l));
 		this.add(new VocabReply("Hej. \n Ska ni äta här?", 1, w));

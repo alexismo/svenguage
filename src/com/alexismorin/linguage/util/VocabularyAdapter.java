@@ -3,6 +3,7 @@ package com.alexismorin.linguage.util;
 import java.util.List;
 
 import com.alexismorin.linguage.se.sv.R;
+import com.squareup.picasso.Picasso;
 
 import android.content.Context;
 import android.util.Log;
@@ -50,7 +51,7 @@ public class VocabularyAdapter extends BaseAdapter {
 
 	static class VocabHolder{
 		TextView word;
-		ImageView flavor_image, conv_left, conv_right;
+		ImageView flavorImageView, convLeftTextView, convRightTextView;
 	}
 	
 	@Override
@@ -74,7 +75,7 @@ public class VocabularyAdapter extends BaseAdapter {
 			if(getItemViewType(position) == ITEM_VIEW_TYPE_FLAVOR_IMAGE){
 				convertView = m_inflater.inflate(R.layout.vocab_flavor_image, parent, false);
 				
-				vocabHolder.flavor_image = (ImageView) convertView.findViewById(R.id.vocab_flavor_image);
+				vocabHolder.flavorImageView = (ImageView) convertView.findViewById(R.id.vocab_flavor_image);
 			}
 			if(getItemViewType(position) == ITEM_VIEW_TYPE_WORD){
 				convertView = m_inflater.inflate(R.layout.vocab_word_list_item, parent, false);
@@ -85,8 +86,8 @@ public class VocabularyAdapter extends BaseAdapter {
 				convertView = m_inflater.inflate(R.layout.vocab_reply_list_item, parent, false);
 				
 				vocabHolder.word = (TextView) convertView.findViewById(R.id.vocab_word);
-				vocabHolder.conv_left = (ImageView) convertView.findViewById(R.id.conv_head_left);
-				vocabHolder.conv_right = (ImageView) convertView.findViewById(R.id.conv_head_right);
+				vocabHolder.convLeftTextView = (ImageView) convertView.findViewById(R.id.conv_head_left);
+				vocabHolder.convRightTextView = (ImageView) convertView.findViewById(R.id.conv_head_right);
 			}
 			
 			convertView.setTag(vocabHolder);
@@ -96,9 +97,11 @@ public class VocabularyAdapter extends BaseAdapter {
 		
 		if(getItemViewType(position) == ITEM_VIEW_TYPE_FLAVOR_IMAGE){
 			VocabFlavorImage flvrImg = (VocabFlavorImage) getItem(position);
-			vocabHolder.flavor_image.setImageDrawable(context.getResources().getDrawable(
+			
+			Picasso.with(context).load(flvrImg.imageURL).into(vocabHolder.flavorImageView);
+			/*vocabHolder.flavor_image.setImageDrawable(context.getResources().getDrawable(
 				flvrImg.getImageResource()
-			));
+			));*/
 		}
 		if(getItemViewType(position) == ITEM_VIEW_TYPE_WORD){
 			VocabWord word = (VocabWord) getItem(position);
@@ -108,12 +111,12 @@ public class VocabularyAdapter extends BaseAdapter {
 			VocabReply reply = (VocabReply) getItem(position);
 			vocabHolder.word.setText(reply.getWord());
 			if(reply.getSpeakerSide() == 0){
-				vocabHolder.conv_left.setImageDrawable(context.getResources().getDrawable(reply.conversationalistDrawable));
-				vocabHolder.conv_right.setImageResource(0);
+				vocabHolder.convLeftTextView.setImageDrawable(context.getResources().getDrawable(reply.conversationalistDrawable));
+				vocabHolder.convRightTextView.setImageResource(0);
 			}
 			if(reply.getSpeakerSide() == 1){
-				vocabHolder.conv_right.setImageDrawable(context.getResources().getDrawable(reply.conversationalistDrawable));
-				vocabHolder.conv_left.setImageResource(0);
+				vocabHolder.convRightTextView.setImageDrawable(context.getResources().getDrawable(reply.conversationalistDrawable));
+				vocabHolder.convLeftTextView.setImageResource(0);
 			}
 		}
 		

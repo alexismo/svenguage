@@ -11,7 +11,7 @@ import com.alexismorin.linguage.util.VocabularyListItem;
 public class WordsRestaurant2 extends ArrayList<VocabularyListItem> {
 
 	public WordsRestaurant2(){
-		this.add(new VocabFlavorImage(R.drawable.restaurant2));
+		this.add(new VocabFlavorImage("http://alexismorin.com/svenguage/restaurant2.jpg"));
 		
 		this.add(new VocabWord("Får vi beställa?", "May we order?"));
 		this.add(new VocabWord("Ursäkta, skulle vi kunna få beställa?", "Excuse me, may we please order?"));

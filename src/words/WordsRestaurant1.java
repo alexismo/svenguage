@@ -9,7 +9,7 @@ import com.alexismorin.linguage.util.VocabularyListItem;
 
 public class WordsRestaurant1 extends ArrayList<VocabularyListItem> {
 	public WordsRestaurant1(){
-		this.add(new VocabFlavorImage(R.drawable.restaurant));
+		this.add(new VocabFlavorImage("http://alexismorin.com/svenguage/restaurant.jpg"));
 		
 		this.add(new VocabWord("en restaurang", "a restaurant"));
 		this.add(new VocabWord("en stol", "a chair"));
