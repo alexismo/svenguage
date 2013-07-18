@@ -66,7 +66,7 @@ public class FeedFragment extends Fragment {
 	
 	//Container Activity must implement this interface
 	public interface OnChallengeCardSelectedListener{
-		public void onTopicCardSelected(Bundle bundle);
+		public void onChallengeCardSelected(Bundle bundle);
 	}
 	
 	private class TopicItemClickListener implements ListView.OnItemClickListener{
@@ -79,7 +79,7 @@ public class FeedFragment extends Fragment {
 			//make a bundle with the topic ID and notify the parent activity
 			Bundle topicBundle = new Bundle();
 			topicBundle.putInt("topicId", topicId);
-			mListener.onTopicCardSelected(topicBundle);
+			mListener.onChallengeCardSelected(topicBundle);
 		}
 	}
 	

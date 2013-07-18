@@ -11,7 +11,6 @@ import com.alexismorin.linguage.se.sv.R.string;
 
 import fragments.FeedFragment;
 import fragments.MySwedishFragment;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +19,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ListFragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -72,26 +72,17 @@ public class DrawerActivity extends Activity implements FeedFragment.OnChallenge
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		// set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 		
+        //set up the content of the drawer menu
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
-		SampleAdapter adapter = new SampleAdapter(this);
-		
-		adapter.add(new SampleItem("Challenges", R.drawable.menu_apostrophe));
-		adapter.add(new SampleItem("My Swedish", R.drawable.menu_myswedish));
-		adapter.add(new SampleItem("Topics", R.drawable.menu_topics));
-		
-		adapter.add(new SampleItem("Dictionary", R.drawable.menu_dictionary));
-		adapter.add(new SampleItem("Watch & Read", R.drawable.menu_watchread));
-		adapter.add(new SampleItem("Settings", R.drawable.menu_settings));
-		
+		DrawerMenuAdapter adapter = new DrawerMenuAdapter(this);		
 		//set the adapter for the list view
 		mDrawerList.setAdapter(adapter);
 		//Set the list's click listener
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-		
+        
 		//get the main feed in
 		Fragment feedFragment = new FeedFragment();
 		
@@ -155,10 +146,11 @@ public class DrawerActivity extends Activity implements FeedFragment.OnChallenge
     }
 	
 	@Override
-	public void onTopicCardSelected(Bundle topicCardBundle) {
+	public void onChallengeCardSelected(Bundle challengeCardBundle) {
 		Log.i("challenge clicked", "gonna start some crazy b*shit");
 		
-		int topicId = topicCardBundle.getInt("topicId");
+		int challengeId = challengeCardBundle.getInt("challengeId");
+		int topicId = challengeCardBundle.getInt("topicId");
 		
 		//start the vocabulary activity
 		Intent vocabAct = new Intent(this, VocabularyActivity.class);
@@ -166,19 +158,27 @@ public class DrawerActivity extends Activity implements FeedFragment.OnChallenge
 		startActivity(vocabAct);
 	}
 	
-	private class SampleItem {
+	private class DrawerMenuItem {
 		public String tag;
 		public int iconRes;
-		public SampleItem(String tag, int iconRes) {
+		public DrawerMenuItem(String tag, int iconRes) {
 			this.tag = tag; 
 			this.iconRes = iconRes;
 		}
 	}
 	
-	private class SampleAdapter extends ArrayAdapter<SampleItem> {
+	private class DrawerMenuAdapter extends ArrayAdapter<DrawerMenuItem> {
 
-		public SampleAdapter(Context context) {
+		public DrawerMenuAdapter(Context context) {
 			super(context, 0);
+			
+			add(new DrawerMenuItem("Challenges", R.drawable.menu_apostrophe));
+			add(new DrawerMenuItem("My Swedish", R.drawable.menu_myswedish));
+			add(new DrawerMenuItem("Topics", R.drawable.menu_topics));
+			
+			add(new DrawerMenuItem("Dictionary", R.drawable.menu_dictionary));
+			add(new DrawerMenuItem("Watch & Read", R.drawable.menu_watchread));
+			add(new DrawerMenuItem("Settings", R.drawable.menu_settings));
 		}
 
 		public View getView(int position, View convertView, ViewGroup parent) {
