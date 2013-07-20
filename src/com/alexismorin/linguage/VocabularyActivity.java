@@ -1,5 +1,6 @@
 package com.alexismorin.linguage;
 
+import java.io.IOException;
 import java.util.Locale;
 
 import com.alexismorin.linguage.se.sv.R;
@@ -9,7 +10,7 @@ import com.alexismorin.linguage.se.sv.R.string;
 
 import fragments.DefinitionFragment;
 import fragments.VocabularySectionFragment;
-
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -18,7 +19,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.app.Fragment;
@@ -39,6 +39,9 @@ public class VocabularyActivity extends FragmentActivity implements DefinitionFr
 	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
+	
+	MediaPlayer mediaPlayer;
+	boolean isPlaying = false;
 
 	/**
 	 * The {@link ViewPager} that will host the section contents.
@@ -64,6 +67,13 @@ public class VocabularyActivity extends FragmentActivity implements DefinitionFr
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+	}
+	
+	@Override 
+	protected void onStop(){
+		super.onStop();
+		if(mediaPlayer != null)
+			mediaPlayer.release();
 	}
 
 	/**
@@ -128,5 +138,41 @@ public class VocabularyActivity extends FragmentActivity implements DefinitionFr
 	public void onSoundButtonClicked(String accent) {
 		//play a sound, yo
 		Log.i("sound",accent);
+		
+		String soundUrl = "http://alexismorin.com/svenguage/restaurant.mp3";
+		
+		if(!isPlaying){
+			//set up the media player
+			mediaPlayer = new MediaPlayer();
+			mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+				//preparing asynchronously seems like a better idea
+				//this way it won't block the UI thread while data loads.
+				@Override
+				public void onPrepared(MediaPlayer mp) {
+					mp.start();
+				}
+			});
+			
+			try {
+				mediaPlayer.setDataSource(soundUrl);
+				mediaPlayer.prepareAsync();
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				Log.e("error", "prepare() failed");
+				e.printStackTrace();
+			}	
+		}else{
+			isPlaying = false;
+			mediaPlayer.release();
+			mediaPlayer = null;
+		}
 	}
 }
