@@ -1,7 +1,6 @@
 package com.alexismorin.linguage.util;
 
 public class TopicCard {
-
 	
 	public String name, description;
 	public int imageResId, topicId;
