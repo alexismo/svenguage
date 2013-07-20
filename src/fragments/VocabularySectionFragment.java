@@ -17,6 +17,7 @@ import com.alexismorin.linguage.util.VocabularyAdapter;
 import com.alexismorin.linguage.util.VocabularyListItem;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -102,8 +103,12 @@ public class VocabularySectionFragment extends Fragment implements DefinitionFra
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id){
 				VocabularyListItem word = wordsList.get(position);
 				if(word instanceof VocabWord){
-					Log.i("Word", ((VocabWord) word).getWord());
 					showDefinitionDialog((VocabWord)word);
+				}
+				if(word instanceof VocabFlavorImage){
+					//should fetch the photograher from the object, 
+					//rather than passing the whole obj
+					showCreativeCommonsDialog((VocabFlavorImage) word);
 				}
 			}
 		});
@@ -115,6 +120,16 @@ public class VocabularySectionFragment extends Fragment implements DefinitionFra
 		DefinitionFragment definition = new DefinitionFragment();
 		definition.setWord(clickedWord);
 		definition.show(getFragmentManager(), "definition");
+	}
+	
+	public void showCreativeCommonsDialog(VocabFlavorImage flavorImage){
+		//show the cc license for the image
+		AlertDialog.Builder ccAlert = new AlertDialog.Builder(getActivity());
+		ccAlert
+			.setTitle("Creative Commons License")
+			.setMessage("Photographer");// @TODO use a parameter here  
+		AlertDialog dialog = ccAlert.create();
+		dialog.show();
 	}
 
 	@Override
