@@ -1,13 +1,18 @@
 package com.alexismorin.linguage.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Hashtable;
 import java.util.List;
 
+import model.LinguageChallengeStub;
+
 import com.alexismorin.linguage.se.sv.R;
+import com.squareup.picasso.Picasso;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +20,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class TopicCardAdapter extends ArrayAdapter<TopicCard> {
+public class TopicCardAdapter extends ArrayAdapter<LinguageChallengeStub> {
 
 	private Context context;
-	private ArrayList<TopicCard> values;
+	private ArrayList<LinguageChallengeStub> values;
 	private LayoutInflater inflater;
 	
 	public class TopicListItem {
@@ -26,10 +31,10 @@ public class TopicCardAdapter extends ArrayAdapter<TopicCard> {
 		ImageView topicIcon;
 	}
 	
-	public TopicCardAdapter(Context context, int resource, ArrayList<TopicCard> commandsList) {
-		super(context, R.layout.card_list_item, commandsList);
+	public TopicCardAdapter(Context context, int resource, Collection<LinguageChallengeStub> commandsList) {
+		super(context, R.layout.card_list_item);
 		this.context = context;
-		values = new ArrayList<TopicCard>();
+		values = new ArrayList<LinguageChallengeStub>();
 		values.addAll(commandsList);
 		inflater = LayoutInflater.from(this.context);
 	}
@@ -38,9 +43,9 @@ public class TopicCardAdapter extends ArrayAdapter<TopicCard> {
 		
 		TopicListItem myListItem;
 		
-		String topicName = getItem(position).name;
-		String topicDesc = getItem(position).description;
-		int topicIcon	 = getItem(position).imageResId;
+		String topicName = getItem(position).getTitle();
+		String topicDesc = getItem(position).getSubtitle();
+		String topicIcon = getItem(position).getIconUrl();
 		
 		if(convertView == null) {
 			convertView = inflater.inflate(R.layout.card_list_item, parent, false);
@@ -57,10 +62,8 @@ public class TopicCardAdapter extends ArrayAdapter<TopicCard> {
 		
 		myListItem.nameText.setText(topicName);
 		myListItem.descText.setText(topicDesc);
-		myListItem.topicIcon.setImageResource(topicIcon);
+		Picasso.with(context).load(topicIcon).into(myListItem.topicIcon);
 		
 		return convertView;
 	}
-
-
 }

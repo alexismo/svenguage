@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -22,6 +23,9 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EncodingUtils;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+
 import android.util.Log;
 
 public class LinguageWebServiceHelper {
@@ -34,7 +38,7 @@ public class LinguageWebServiceHelper {
 	
 	public LinguageWebServiceHelper(String serverPrefix){
 		this.server_prefix = serverPrefix;
-		serverPrefix += "services/v1";
+		//serverPrefix += "services/v1";
 	}
 	
 	protected HttpGet doHttpGet(URL url) throws MalformedURLException{
@@ -63,7 +67,7 @@ public class LinguageWebServiceHelper {
 
 	
 	protected synchronized String callService(String serviceName, List<NameValuePair> postParams, String method) throws MalformedURLException{
-	    URL url = new URL(service_prefix+serviceName);
+	    URL url = new URL(server_prefix+serviceName);
 	    HttpParams httpParameters = new BasicHttpParams();
 	    // Set the timeout in milliseconds until a connection is established.
 	    // The default value is zero, that means the timeout is not used. 
@@ -116,5 +120,14 @@ public class LinguageWebServiceHelper {
 	    String thePagesContent = EncodingUtils.getString(content.toByteArray(), "UTF-8");
 	    
 	    return thePagesContent;
+	}
+
+	public FeedResponse getChallengesFeed() throws JsonSyntaxException, MalformedURLException{
+		Gson gson = new Gson();
+		
+		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(0);
+		FeedResponse fr = gson.fromJson(callService("feed.json", nameValuePairs, "get"), FeedResponse.class);
+		
+		return fr;
 	}
 }

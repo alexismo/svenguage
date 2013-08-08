@@ -1,7 +1,24 @@
 package model;
 
-public class LinguageChallenge {
+import java.io.Serializable;
+
+import com.google.gson.annotations.SerializedName;
+
+public class LinguageChallenge implements Serializable{
+	@SerializedName("id")
 	int id;
-	String type, source_lang, target_lang, title, subtitle, icon;
+	@SerializedName("type")
+	String type;
+	@SerializedName("source_lang")
+	String source_lang;
+	@SerializedName("target_lang")
+	String target_lang;
+	@SerializedName("title")
+	String title;
+	@SerializedName("subtitle")
+	String subtitle;
+	@SerializedName("icon")
+	String icon;
+	@SerializedName("completed")
 	boolean completed;
 }
