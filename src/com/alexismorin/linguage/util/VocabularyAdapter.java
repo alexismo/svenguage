@@ -2,6 +2,8 @@ package com.alexismorin.linguage.util;
 
 import java.util.List;
 
+import model.Word;
+
 import com.alexismorin.linguage.se.sv.R;
 import com.squareup.picasso.Picasso;
 
@@ -104,12 +106,12 @@ public class VocabularyAdapter extends BaseAdapter {
 			));*/
 		}
 		if(getItemViewType(position) == ITEM_VIEW_TYPE_WORD){
-			VocabWord word = (VocabWord) getItem(position);
-			vocabHolder.word.setText(word.getWord());
+			Word word = (Word) getItem(position);
+			vocabHolder.word.setText(word.getWord_source());
 		}
 		if(getItemViewType(position) == ITEM_VIEW_TYPE_REPLY){
 			VocabReply reply = (VocabReply) getItem(position);
-			vocabHolder.word.setText(reply.getWord());
+			vocabHolder.word.setText(reply.getWord_source());
 			if(reply.getSpeakerSide() == 0){
 				vocabHolder.convLeftTextView.setImageDrawable(context.getResources().getDrawable(reply.conversationalistDrawable));
 				vocabHolder.convRightTextView.setImageResource(0);

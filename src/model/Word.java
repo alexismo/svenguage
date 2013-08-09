@@ -3,9 +3,10 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import com.alexismorin.linguage.util.VocabularyListItem;
 import com.google.gson.annotations.SerializedName;
 
-public class Word implements Serializable{
+public class Word implements Serializable, VocabularyListItem{
 	@SerializedName("id")
 	int id;
 	// times_seen;
@@ -17,4 +18,42 @@ public class Word implements Serializable{
 	Language language;
 	@SerializedName("sounds")
 	ArrayList<Sound> sounds;
+	
+	
+	
+	public String getWord_source() {
+		return word_source;
+	}
+
+	public String getWord_target() {
+		return word_target;
+	}
+
+	public Language getLanguage() {
+		return language;
+	}
+
+	public ArrayList<Sound> getSounds() {
+		return sounds;
+	}
+
+	@Override
+	public boolean is_flavor_image() {
+		return false;
+	}
+
+	@Override
+	public boolean is_word() {
+		return true;
+	}
+
+	@Override
+	public boolean is_sentence() {
+		return false;
+	}
+
+	@Override
+	public boolean is_reply() {
+		return false;
+	}
 }

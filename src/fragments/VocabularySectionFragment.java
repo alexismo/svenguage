@@ -10,7 +10,6 @@ import com.alexismorin.linguage.VocabularyActivity;
 import com.alexismorin.linguage.se.sv.R;
 import com.alexismorin.linguage.util.VocabFlavorImage;
 import com.alexismorin.linguage.util.VocabReply;
-import com.alexismorin.linguage.util.VocabWord;
 import com.alexismorin.linguage.util.VocabularyAdapter;
 import com.alexismorin.linguage.util.VocabularyListItem;
 
@@ -80,8 +79,8 @@ public class VocabularySectionFragment extends Fragment implements DefinitionFra
 		vocabListView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id){
 				VocabularyListItem word = (VocabularyListItem) vocabAdapter.getItem(position);
-				if(word instanceof VocabWord){
-					showDefinitionDialog((VocabWord)word);
+				if(word instanceof Word){
+					showDefinitionDialog((Word)word);
 				}
 				if(word instanceof VocabFlavorImage){
 					//should fetch the photograher from the object, 
@@ -94,7 +93,7 @@ public class VocabularySectionFragment extends Fragment implements DefinitionFra
 		return rootView;
 	}
 	
-	public void showDefinitionDialog(VocabWord clickedWord){
+	public void showDefinitionDialog(Word clickedWord){
 		DefinitionFragment definition = new DefinitionFragment();
 		definition.setWord(clickedWord);
 		definition.show(getFragmentManager(), "definition");

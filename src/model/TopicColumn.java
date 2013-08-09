@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.alexismorin.linguage.util.VocabFlavorImage;
-import com.alexismorin.linguage.util.VocabWord;
 import com.alexismorin.linguage.util.VocabularyListItem;
 import com.google.gson.annotations.SerializedName;
 
@@ -24,17 +23,16 @@ public class TopicColumn implements Serializable{
 	@SerializedName("target_lang")
 	Language target_lang;
 	@SerializedName("words")
-	ArrayList<Word> words;	
+	ArrayList<Word> words;
 	@SerializedName("column_order")
 	int column_order;
 	
 	public ArrayList<VocabularyListItem> toVocabListItems(){
 		ArrayList<VocabularyListItem> list = new ArrayList<VocabularyListItem>();
+		//make a list that can be digested by VocabularySectionFragment;
+		//flavor image first, then words
 		list.add(new VocabFlavorImage(header_url, header_author));
-		for(int x = 0; x < words.size(); x++){
-			Word w = words.get(x);
-			list.add(new VocabWord(w.word_source, w.word_target));
-		}
+		list.addAll(words);
 		return list;
 	}
 

@@ -1,7 +1,8 @@
 package fragments;
 
+import model.Word;
+
 import com.alexismorin.linguage.se.sv.R;
-import com.alexismorin.linguage.util.VocabWord;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -23,7 +24,7 @@ import android.content.DialogInterface;
 public class DefinitionFragment extends DialogFragment {
 	
 	OnSoundButtonClicked mListener;	
-	VocabWord word;
+	Word word;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -35,8 +36,11 @@ public class DefinitionFragment extends DialogFragment {
         ImageButton soundButton = (ImageButton) v.findViewById(R.id.speak_button);
         
 		if(word != null){
-	        sourceWord.setText(word.getWord());
-	        translationWord.setText(word.getTranslation());
+	        sourceWord.setText(word.getWord_source());
+	        translationWord.setText(word.getWord_target());
+		}
+		if(word.getSounds().size() == 0){
+			soundButton.setEnabled(false);
 		}
         
 		soundButton.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +61,7 @@ public class DefinitionFragment extends DialogFragment {
 		return v;
 	}
 	
-	public void setWord(VocabWord newWord){
+	public void setWord(Word newWord){
 		word = newWord;
 	}
 	

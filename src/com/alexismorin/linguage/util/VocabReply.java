@@ -1,6 +1,8 @@
 package com.alexismorin.linguage.util;
 
-public class VocabReply extends VocabWord {
+import model.Word;
+
+public class VocabReply extends Word{
 
 	int side, conversationalistDrawable;
 	
@@ -13,7 +15,7 @@ public class VocabReply extends VocabWord {
 	}
 
 	public VocabReply(String word, int side, int conversationalistDrawable) {
-		super(word, "");
+		//super(word, "");
 		this.side = side;
 		this.conversationalistDrawable = conversationalistDrawable;
 	}
