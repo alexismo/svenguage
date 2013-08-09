@@ -3,13 +3,19 @@ package com.alexismorin.linguage;
 import java.io.IOException;
 import java.util.Locale;
 
+import model.TopicChallenge;
+
 import com.alexismorin.linguage.se.sv.R;
 import com.alexismorin.linguage.se.sv.R.id;
 import com.alexismorin.linguage.se.sv.R.layout;
 import com.alexismorin.linguage.se.sv.R.string;
+import com.alexismorin.linguage.util.net.ChallengeFeedTask;
+import com.alexismorin.linguage.util.net.TopicChallengeResponse;
+import com.alexismorin.linguage.util.net.TopicChallengeTask;
 
 import fragments.DefinitionFragment;
 import fragments.VocabularySectionFragment;
+import android.app.ProgressDialog;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,12 +48,13 @@ public class VocabularyActivity extends FragmentActivity implements DefinitionFr
 	
 	MediaPlayer mediaPlayer;
 	boolean isPlaying = false;
-
+	ProgressDialog progressD;
+	
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
-	int topic;
+	int challengeId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +62,23 @@ public class VocabularyActivity extends FragmentActivity implements DefinitionFr
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_vocabulary);
+		progressD = new ProgressDialog(this);
+		progressD.setCancelable(false);
 		
-		if(getIntent().hasExtra("activityTopic"))
-			topic = getIntent().getExtras().getInt("activityTopic");
-
+		if(getIntent().hasExtra("challengeId")){
+			challengeId = getIntent().getExtras().getInt("challengeId");
+			//fetch the thing
+			TopicChallengeTask tct = new TopicChallengeTask(this, challengeId, progressD);
+			tct.execute();
+		}
+	}
+	
+	public void attachAdapter(TopicChallenge tc){
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
-		mSectionsPagerAdapter = new SectionsPagerAdapter(
-				getSupportFragmentManager());
-
+		//send the challenge and its columns down to it
+		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), tc);
+	
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -82,8 +97,11 @@ public class VocabularyActivity extends FragmentActivity implements DefinitionFr
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-		public SectionsPagerAdapter(FragmentManager fm) {
+		TopicChallenge challenge;
+		
+		public SectionsPagerAdapter(FragmentManager fm, TopicChallenge challenge) {
 			super(fm);
+			this.challenge = challenge;
 		}
 
 		@Override
@@ -91,29 +109,18 @@ public class VocabularyActivity extends FragmentActivity implements DefinitionFr
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
-			Fragment fragment = VocabularySectionFragment.newInstance(position+1, topic);
-			
+			Fragment fragment = VocabularySectionFragment.newInstance(position+1, challenge.columns.get(position));
 			return fragment;
 		}
 
 		@Override
 		public int getCount() {
-			// Show 3 total pages.
-			return 3;
+			return challenge.columns.size();
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
-			Locale l = Locale.getDefault();
-			switch (position) {
-			case 0:
-				return getString(R.string.vocab_words).toUpperCase(l);
-			case 1:
-				return getString(R.string.vocab_sentences).toUpperCase(l);
-			case 2:
-				return getString(R.string.vocab_context).toUpperCase(l);
-			}
-			return null;
+			return challenge.columns.get(position).getTitle().toUpperCase(Locale.getDefault());
 		}
 	}
 

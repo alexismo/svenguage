@@ -10,15 +10,17 @@ public class LinguageChallenge implements Serializable{
 	@SerializedName("type")
 	String type;
 	@SerializedName("source_lang")
-	String source_lang;
+	Language source_lang;
 	@SerializedName("target_lang")
-	String target_lang;
+	Language target_lang;
 	@SerializedName("title")
 	String title;
 	@SerializedName("subtitle")
 	String subtitle;
 	@SerializedName("icon")
 	String icon;
-	@SerializedName("completed")
+	
+	/*@SerializedName("completed")
 	boolean completed;
+	*/
 }

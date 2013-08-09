@@ -2,14 +2,16 @@ package com.alexismorin.linguage.util;
 
 public class VocabFlavorImage implements VocabularyListItem{
 	String imageURL;
+	private String author;
 
 	public String getImageResource() {
 		return imageURL;
 	}
 
-	public VocabFlavorImage(String imageURL) {
+	public VocabFlavorImage(String imageURL, String author) {
 		super();
 		this.imageURL = imageURL;
+		this.setAuthor(author);
 	}
 
 	@Override
@@ -30,5 +32,13 @@ public class VocabFlavorImage implements VocabularyListItem{
 	@Override
 	public boolean is_reply() {
 		return false;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 }

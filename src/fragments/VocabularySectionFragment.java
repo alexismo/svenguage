@@ -3,10 +3,8 @@ package fragments;
 import java.util.ArrayList;
 import java.util.List;
 
-import words.WordsBus1;
-import words.WordsRestaurant1;
-import words.WordsRestaurant2;
-import words.WordsRestaurant3;
+import model.TopicColumn;
+import model.Word;
 
 import com.alexismorin.linguage.VocabularyActivity;
 import com.alexismorin.linguage.se.sv.R;
@@ -44,14 +42,14 @@ public class VocabularySectionFragment extends Fragment implements DefinitionFra
 	public VocabularySectionFragment(){
 	}
 	
-	public static VocabularySectionFragment newInstance(int position, int topic) {
+	public static VocabularySectionFragment newInstance(int position, TopicColumn column) {
 		//creating the fragment like the prevents the loss of initial parameters during ConfigurationChange
 		//see: http://stackoverflow.com/questions/16756730/how-to-make-a-constructor-for-a-fragment
 		VocabularySectionFragment frag=new VocabularySectionFragment();
 	    Bundle args=new Bundle();
 
 	    args.putInt(ARG_SECTION_NUMBER, position);
-	    args.putInt(ARG_TOPIC_ID, topic);
+	    args.putSerializable(ARG_TOPIC_ID, column);
 	    
 	    frag.setArguments(args);
 
@@ -64,44 +62,24 @@ public class VocabularySectionFragment extends Fragment implements DefinitionFra
 		View rootView = inflater.inflate(
 				R.layout.fragment_vocabulary, container, false);
 		
-		int topic, position;
+		TopicColumn topic;
+		int position;
 		Bundle args = getArguments();
 		position = args.getInt(ARG_SECTION_NUMBER);
-		topic = args.getInt(ARG_TOPIC_ID);
+		topic = (TopicColumn) args.getSerializable(ARG_TOPIC_ID);
 		
 		if(wordsList == null){
 			wordsList = new ArrayList<VocabularyListItem>();//instantiate the thing
-			
-			if(topic == 3){
-				switch (position) {
-				case 1:
-					wordsList = new WordsRestaurant1();
-					break;
-
-				case 2:
-					wordsList = new WordsRestaurant2();
-					break;
-				case 3:
-					wordsList = new WordsRestaurant3();
-					
-					break;
-					
-				default:
-					break;
-				}
-			}if(topic == 1){
-				wordsList = new WordsBus1();
-			}
 		}
 		
 		vocabListView = (ListView) rootView.findViewById(R.id.vocab_list_view);
 		
-		vocabAdapter = new VocabularyAdapter(getActivity().getApplicationContext(), wordsList);
+		vocabAdapter = new VocabularyAdapter(getActivity().getApplicationContext(), topic.toVocabListItems());
 		vocabListView.setAdapter(vocabAdapter);
 		
 		vocabListView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-				VocabularyListItem word = wordsList.get(position);
+				VocabularyListItem word = (VocabularyListItem) vocabAdapter.getItem(position);
 				if(word instanceof VocabWord){
 					showDefinitionDialog((VocabWord)word);
 				}
@@ -127,7 +105,7 @@ public class VocabularySectionFragment extends Fragment implements DefinitionFra
 		AlertDialog.Builder ccAlert = new AlertDialog.Builder(getActivity());
 		ccAlert
 			.setTitle("Creative Commons License")
-			.setMessage("Photographer");// @TODO use a parameter here  
+			.setMessage(flavorImage.getAuthor()); 
 		AlertDialog dialog = ccAlert.create();
 		dialog.show();
 	}

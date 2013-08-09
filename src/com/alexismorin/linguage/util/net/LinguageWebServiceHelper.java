@@ -130,4 +130,13 @@ public class LinguageWebServiceHelper {
 		
 		return fr;
 	}
+
+	public TopicChallengeResponse getTopicChallenge(int challengeId) throws JsonSyntaxException, MalformedURLException {
+		Gson gson = new Gson();
+		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(0);
+		
+		TopicChallengeResponse tcr = gson.fromJson(callService("challenge"+challengeId+".json", nameValuePairs, "get"), TopicChallengeResponse.class);
+		
+		return tcr;
+	}
 }
