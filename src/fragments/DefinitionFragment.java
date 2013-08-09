@@ -40,7 +40,7 @@ public class DefinitionFragment extends DialogFragment {
 	        translationWord.setText(word.getWord_target());
 		}
 		if(word.getSounds().size() == 0){
-			soundButton.setEnabled(false);
+			soundButton.setVisibility(View.INVISIBLE);
 		}
         
 		soundButton.setOnClickListener(new View.OnClickListener() {

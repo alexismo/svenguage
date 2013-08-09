@@ -3,6 +3,8 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import android.support.v4.view.ViewPager;
+
 import com.alexismorin.linguage.util.VocabFlavorImage;
 import com.alexismorin.linguage.util.VocabularyListItem;
 import com.google.gson.annotations.SerializedName;
@@ -29,7 +31,9 @@ public class TopicColumn implements Serializable{
 	
 	public ArrayList<VocabularyListItem> toVocabListItems(){
 		ArrayList<VocabularyListItem> list = new ArrayList<VocabularyListItem>();
-		//make a list that can be digested by VocabularySectionFragment;
+		/**
+		 * make a list that can be digested by {@link VocabularySectionFragment};
+		 */
 		//flavor image first, then words
 		list.add(new VocabFlavorImage(header_url, header_author));
 		list.addAll(words);
