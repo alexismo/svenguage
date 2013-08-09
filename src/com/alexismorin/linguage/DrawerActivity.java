@@ -147,15 +147,17 @@ public class DrawerActivity extends Activity implements FeedFragment.OnChallenge
 	
 	@Override
 	public void onChallengeCardSelected(Bundle challengeCardBundle) {
-		Log.i("challenge clicked", "gonna start some crazy b*shit");
-		
 		int challengeId = challengeCardBundle.getInt("challengeId");
-		int topicId = challengeCardBundle.getInt("topicId");
+		String chalType = challengeCardBundle.getString("chalType");
 		
-		//start the vocabulary activity
-		Intent vocabAct = new Intent(this, VocabularyActivity.class);
-		vocabAct.putExtra("activityTopic", topicId);
-		startActivity(vocabAct);
+		if(chalType.equals("topic")){
+			//start the vocabulary activity
+			Intent vocabAct = new Intent(this, VocabularyActivity.class);
+			vocabAct.putExtra("challengeId",challengeId);
+			startActivity(vocabAct);
+		}else{
+			Log.i("No Challenge", "sorry, that kind of challenge hasn't been implemented yet.");
+		}
 	}
 	
 	private class DrawerMenuItem {

@@ -90,11 +90,14 @@ public class FeedFragment extends Fragment {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
-			int topicId = nowArrayAdapter.getItem(position).getId();
+			LinguageChallengeStub stub = nowArrayAdapter.getItem(position);
+			int challengeId = stub.getId();
+			String chalType = stub.getType();
 			
 			//make a bundle with the topic ID and notify the parent activity
 			Bundle topicBundle = new Bundle();
-			topicBundle.putInt("topicId", topicId);
+			topicBundle.putInt("challengeId", challengeId);
+			topicBundle.putString("chalType", chalType);
 			mListener.onChallengeCardSelected(topicBundle);
 		}
 	}
