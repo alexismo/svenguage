@@ -101,13 +101,11 @@ public class VocabularyAdapter extends BaseAdapter {
 			VocabFlavorImage flvrImg = (VocabFlavorImage) getItem(position);
 			
 			Picasso.with(context).load(flvrImg.imageURL).into(vocabHolder.flavorImageView);
-			/*vocabHolder.flavor_image.setImageDrawable(context.getResources().getDrawable(
-				flvrImg.getImageResource()
-			));*/
 		}
 		if(getItemViewType(position) == ITEM_VIEW_TYPE_WORD){
 			Word word = (Word) getItem(position);
-			vocabHolder.word.setText(word.getWord_source());
+			//show the word in the target language to invite user to click on it
+			vocabHolder.word.setText(word.getWord_target());
 		}
 		if(getItemViewType(position) == ITEM_VIEW_TYPE_REPLY){
 			VocabReply reply = (VocabReply) getItem(position);

@@ -31,13 +31,13 @@ public class DefinitionFragment extends DialogFragment {
         
         View v = inflater.inflate(R.layout.fragment_definition, container);
         
-        TextView sourceWord = (TextView) v.findViewById(R.id.source_language_title);
-        TextView translationWord = (TextView) v.findViewById(R.id.translation_language_title);
+        TextView sourceWord = (TextView) v.findViewById(R.id.source_lang_title);
+        TextView targetWord = (TextView) v.findViewById(R.id.target_lang_title);
         ImageButton soundButton = (ImageButton) v.findViewById(R.id.speak_button);
         
 		if(word != null){
 	        sourceWord.setText(word.getWord_source());
-	        translationWord.setText(word.getWord_target());
+	        targetWord.setText(word.getWord_target());
 		}
 		if(word.getSounds().size() == 0){
 			soundButton.setVisibility(View.INVISIBLE);

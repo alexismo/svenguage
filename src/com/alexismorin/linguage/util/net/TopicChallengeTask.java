@@ -15,6 +15,7 @@ import com.google.gson.JsonSyntaxException;
 import fragments.FeedFragment;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -33,16 +34,22 @@ public class TopicChallengeTask extends AsyncTask<String, Void, TopicChallengeRe
 	
 	@Override
     protected void onPreExecute(){
+		progressD.setOnCancelListener(new DialogInterface.OnCancelListener() {
+			@Override
+			public void onCancel(DialogInterface dialog) {
+				 cancel(true);
+			}
+		});
 		progressD.show();
-		/*
-        if(InternetStatus.getInstance(drawerAct).isOnline(drawerAct)){
+		
+        if(InternetStatus.getInstance(vocabAct).isOnline(vocabAct)){
         	
         }else{
         	//drawerAct.toastError(R.string.no_connection);
         	Log.e("no internet","no connection");
-            cancel(true);
+            progressD.cancel();
+        	cancel(true);
         }
-        */
     }
 	
 	@Override

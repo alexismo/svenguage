@@ -8,21 +8,21 @@
     android:padding="@dimen/activity_vertical_margin" >
 
     <TextView
-        android:id="@+id/source_language_title"
+        android:id="@+id/target_lang_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/menu_placeholder"
+        android:textAppearance="@style/textAppearanceLargeLight" />
+    
+    <TextView
+        android:id="@+id/source_lang_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:gravity="center_horizontal"
         android:text="@string/menu_placeholder"
         android:textAppearance="@style/textAppearanceLargeRegular" />
-
-    <TextView
-        android:id="@+id/translation_language_title"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/menu_placeholder"
-        android:textAppearance="@style/textAppearanceLargeLight" />
 
     <ImageButton
         android:id="@+id/speak_button"

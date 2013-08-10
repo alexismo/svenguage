@@ -19,6 +19,7 @@ import com.alexismorin.linguage.util.net.FeedResponse;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.app.Fragment;
 import android.app.ListFragment;
@@ -42,11 +43,13 @@ public class FeedFragment extends Fragment {
 	//new card listview things
 	TopicCardAdapter nowArrayAdapter;
 	ListView list;
+	//for the AsyncTask
+	ChallengeFeedTask cft = null;
 	ProgressDialog progressD;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		
+
 		View view = inflater.inflate(R.layout.fragment_feed, container, false);
 		list = (ListView) view.findViewById(R.id.challengeCards);
 		list.setDivider(null);
@@ -57,9 +60,8 @@ public class FeedFragment extends Fragment {
 		list.setAdapter(nowArrayAdapter);
 		
 		progressD = new ProgressDialog(getActivity());
-		progressD.setCancelable(false);
+		progressD.setCancelable(true);
 		
-		Log.i("Progress","initialized");
 		if(nowArrayAdapter.isEmpty()){
 			getFeed();
 		}
@@ -70,7 +72,7 @@ public class FeedFragment extends Fragment {
 	private void getFeed() {
 		nowArrayAdapter.notifyDataSetInvalidated();
 		
-		ChallengeFeedTask cft = new ChallengeFeedTask(this, progressD);
+		ChallengeFeedTask cft = new ChallengeFeedTask(this, progressD, this.getActivity());
 		cft.execute();
 	}
 	
