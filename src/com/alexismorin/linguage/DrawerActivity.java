@@ -174,13 +174,13 @@ public class DrawerActivity extends Activity implements FeedFragment.OnChallenge
 		public DrawerMenuAdapter(Context context) {
 			super(context, 0);
 			
-			add(new DrawerMenuItem("Challenges", R.drawable.menu_apostrophe));
-			add(new DrawerMenuItem("My Swedish", R.drawable.menu_myswedish));
-			add(new DrawerMenuItem("Topics", R.drawable.menu_topics));
+			add(new DrawerMenuItem(getString(R.string.menu_challenges), R.drawable.menu_apostrophe));
+			add(new DrawerMenuItem(getString(R.string.menu_my_french), R.drawable.menu_myfrench));
+			add(new DrawerMenuItem(getString(R.string.menu_topics), R.drawable.menu_topics));
 			
-			add(new DrawerMenuItem("Dictionary", R.drawable.menu_dictionary));
-			add(new DrawerMenuItem("Watch & Read", R.drawable.menu_watchread));
-			add(new DrawerMenuItem("Settings", R.drawable.menu_settings));
+			add(new DrawerMenuItem(getString(R.string.menu_dictionary), R.drawable.menu_dictionary));
+			add(new DrawerMenuItem(getString(R.string.menu_watch_read), R.drawable.menu_watchread));
+			add(new DrawerMenuItem(getString(R.string.menu_settings), R.drawable.menu_settings));
 		}
 
 		public View getView(int position, View convertView, ViewGroup parent) {
