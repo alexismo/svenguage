@@ -3,8 +3,8 @@
 
     <item
         android:id="@+id/user_face"
-        android:title="@string/my_swedish"
-        android:titleCondensed="@string/my_swedish"
+        android:title="@string/my_french"
+        android:titleCondensed="@string/my_french"
         android:icon="@drawable/user_face"
         android:visible="true"
         android:showAsAction="always">

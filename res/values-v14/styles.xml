@@ -5,10 +5,20 @@
         AppBaseTheme from BOTH res/values/styles.xml and
         res/values-v11/styles.xml on API 14+ devices.
     -->
-    <style name="LinguageTheme" parent="android:Theme.Holo.Light">
+    <style name="FranguageTheme" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/FRActionBar</item>
+    </style>
+    <style name="SvenguageTheme" parent="android:Theme.Holo.Light">
         <item name="android:actionBarStyle">@style/SVActionBar</item>
     </style>
 
+    <style name="FRActionBar" parent="android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@drawable/actionbar_texture</item>
+        <item name="android:displayOptions">useLogo|showHome</item>
+        <item name="android:icon">@drawable/svenguage_logo_long</item>
+        <!-- <item name="android:titleTextStyle">@style/VLOActionBar.ButtonTextColor</item> -->
+    </style>
+    
     <style name="SVActionBar" parent="android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@drawable/actionbar_texture</item>
         <item name="android:displayOptions">useLogo|showHome</item>

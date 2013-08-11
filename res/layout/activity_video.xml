@@ -24,7 +24,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             style="@style/textAppearanceMediumRegular"
-            android:text="@string/video_captions"
            android:paddingLeft="@dimen/activity_horizontal_margin_thin"
            android:paddingRight="@dimen/activity_horizontal_margin_thin"
             />
