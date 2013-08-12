@@ -13,14 +13,14 @@
     </style>
 
     <style name="FRActionBar" parent="android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@drawable/actionbar_texture</item>
+        <item name="android:background">@drawable/actionbar_texture_fr</item>
         <item name="android:displayOptions">useLogo|showHome</item>
-        <item name="android:icon">@drawable/svenguage_logo_long</item>
+        <item name="android:icon">@drawable/franguage_logo_long</item>
         <!-- <item name="android:titleTextStyle">@style/VLOActionBar.ButtonTextColor</item> -->
     </style>
     
     <style name="SVActionBar" parent="android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@drawable/actionbar_texture</item>
+        <item name="android:background">@drawable/actionbar_texture_sv</item>
         <item name="android:displayOptions">useLogo|showHome</item>
         <item name="android:icon">@drawable/svenguage_logo_long</item>
         <!-- <item name="android:titleTextStyle">@style/VLOActionBar.ButtonTextColor</item> -->

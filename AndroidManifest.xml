@@ -15,7 +15,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/SvenguageTheme" >
+        android:theme="@style/FranguageTheme" >
         <activity
             android:name="com.alexismorin.linguage.DrawerActivity"
             android:label="@string/app_name"
