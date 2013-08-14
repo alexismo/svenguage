@@ -37,5 +37,9 @@
     <string name="reply_left">Reply Left</string>
     <string name="reply_right">Reply Right</string>
     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    
+    <!-- Placeholder activity -->
+    <string name="not_done">fran\'guage isn\'t quite finished yet, and I\'d love your feedback.\nPlease send me your thoughts and comments so far and I promise to read it.</string>
+    <string name="send_feedback">Send Comment</string>
 
 </resources>

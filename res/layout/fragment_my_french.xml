@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/myfr_blur" >
+
+    <!-- <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/myfr_blur"
+        android:contentDescription="@string/dummy_content" />
+         -->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:padding="15dp"
+        android:background="@color/transparentwhite" >
+        
+    <TextView
+        android:id="@+id/demoMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:text="@string/not_done"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button 
+        android:id="@+id/commentBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="9dp"
+        android:layout_below="@+id/demoMessage"
+        android:text="@string/send_feedback"
+        style="@style/franguageBlueButton"
+        />
+    
+    </RelativeLayout>
+
+</RelativeLayout>

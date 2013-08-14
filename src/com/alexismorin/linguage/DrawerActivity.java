@@ -10,7 +10,7 @@ import com.alexismorin.linguage.se.sv.R.layout;
 import com.alexismorin.linguage.se.sv.R.string;
 
 import fragments.FeedFragment;
-import fragments.MySwedishFragment;
+import fragments.MyFrenchFragment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -110,7 +110,7 @@ public class DrawerActivity extends Activity implements FeedFragment.OnChallenge
 			break;
 
 		case 1://My Swedish
-			frag = new MySwedishFragment();
+			frag = new MyFrenchFragment();
 			fragmentManager.beginTransaction().replace(R.id.content_frame, frag).commit();
 		default:
 			

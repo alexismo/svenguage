@@ -6,11 +6,18 @@
     <color name="black_overlay">#66000000</color>
     <color name="swedenBlue">#005293</color>
     <color name="swedenLightBlue">#0072cc</color>
+    
+    <color name="quebecBlue">#002495</color>
+    <color name="quebecLightBlue">#0033cc</color>
+    
     <color name="svenguageGrey">#5b5b5b</color>
     <color name="svenguageLightGrey">#999999</color>
+    
+    
     <color name="slidingMenuLabel">#f3f3f3</color>
     <color name="slidingMenuGrey">#303030</color>
     <color name="slidingMenuPressed">#595959</color>
     <color name="slidingMenuSep">#1e1e1e</color>
+    <color name="transparentwhite">#ccffffff</color>
 
 </resources>
