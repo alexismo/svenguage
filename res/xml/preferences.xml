@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory 
+        android:title="@string/pref_language"
+        android:key="pref_lang_settings">
+        <Preference 
+            android:defaultValue="frCA"
+            android:key="pref_learn_lang"
+            android:summary="@string/pref_lang_learn_summary"
+            android:title="@string/pref_lang_learn" />
+        <Preference 
+            android:defaultValue="10"
+            android:key="pref_ui_conversion"
+            android:summary="@string/pref_ui_conversion_summary"
+            android:title="@string/pref_ui_conversion" />
+    </PreferenceCategory>
+</PreferenceScreen>

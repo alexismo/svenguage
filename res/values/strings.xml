@@ -41,5 +41,12 @@
     <!-- Placeholder activity -->
     <string name="not_done">fran\'guage isn\'t quite finished yet, and I\'d love your feedback.\nPlease send me your thoughts and comments so far and I promise to read it.</string>
     <string name="send_feedback">Send Comment</string>
+    
+    <!-- Preferences -->
+    <string name="pref_language">Language Settings</string>
+    <string name="pref_lang_learn">Learning Language</string>
+    <string name="pref_lang_learn_summary">The language you want to learn</string>
+    <string name="pref_ui_conversion">UI Translation</string>
+    <string name="pref_ui_conversion_summary">How much of the UI should be in French.</string>
 
 </resources>

@@ -9,7 +9,9 @@ import com.alexismorin.linguage.se.sv.R.id;
 import com.alexismorin.linguage.se.sv.R.layout;
 import com.alexismorin.linguage.se.sv.R.string;
 
+import fragments.DictionaryFragment;
 import fragments.FeedFragment;
+import fragments.LinguagePrefsFragment;
 import fragments.MyFrenchFragment;
 import android.app.Activity;
 import android.content.Context;
@@ -109,9 +111,31 @@ public class DrawerActivity extends Activity implements FeedFragment.OnChallenge
 			fragmentManager.beginTransaction().replace(R.id.content_frame, frag).commit();
 			break;
 
-		case 1://My Swedish
+		case 1://My French
 			frag = new MyFrenchFragment();
 			fragmentManager.beginTransaction().replace(R.id.content_frame, frag).commit();
+			break;
+			
+		case 2://Topics
+			frag = new MyFrenchFragment();
+			fragmentManager.beginTransaction().replace(R.id.content_frame, frag).commit();
+			break;
+			
+		case 3://Dictionary
+			frag = new DictionaryFragment();
+			fragmentManager.beginTransaction().replace(R.id.content_frame, frag).commit();
+			break;
+			
+		case 4://Watch & Read
+			frag = new DictionaryFragment();
+			fragmentManager.beginTransaction().replace(R.id.content_frame, frag).commit();
+			break;
+			
+		case 5://Settings
+			frag = new LinguagePrefsFragment();
+			fragmentManager.beginTransaction().replace(R.id.content_frame, frag).commit();
+			break;
+			
 		default:
 			
 			break;
