@@ -41,7 +41,7 @@ public class FeedFragment extends Fragment {
 	protected ListFragment mFrag;
 	OnChallengeCardSelectedListener mListener;
 	//new card listview things
-	TopicCardAdapter nowArrayAdapter;
+	TopicCardAdapter topicCardAdapter;
 	ListView list;
 	//for the AsyncTask
 	ChallengeFeedTask cft = null;
@@ -56,13 +56,13 @@ public class FeedFragment extends Fragment {
 		list.setDividerHeight(0);
 		list.setOnItemClickListener(new TopicItemClickListener());
 		
-		nowArrayAdapter = new TopicCardAdapter(getActivity().getApplicationContext(), R.id.challengeCards, new ArrayList<LinguageChallengeStub>());
-		list.setAdapter(nowArrayAdapter);
+		topicCardAdapter = new TopicCardAdapter(getActivity().getApplicationContext(), R.id.challengeCards, new ArrayList<LinguageChallengeStub>());
+		list.setAdapter(topicCardAdapter);
 		
 		progressD = new ProgressDialog(getActivity());
 		progressD.setCancelable(true);
 		
-		if(nowArrayAdapter.isEmpty()){
+		if(topicCardAdapter.isEmpty()){
 			getFeed();
 		}
 		
@@ -70,16 +70,16 @@ public class FeedFragment extends Fragment {
 	}
 	
 	private void getFeed() {
-		nowArrayAdapter.notifyDataSetInvalidated();
+		topicCardAdapter.notifyDataSetInvalidated();
 		
 		ChallengeFeedTask cft = new ChallengeFeedTask(this, progressD, this.getActivity());
 		cft.execute();
 	}
 	
 	public void setCardsList(ArrayList<LinguageChallengeStub> newCards){
-		nowArrayAdapter.clear();
-		nowArrayAdapter.addAll(newCards);
-		nowArrayAdapter.notifyDataSetChanged();
+		topicCardAdapter.clear();
+		topicCardAdapter.addAll(newCards);
+		topicCardAdapter.notifyDataSetChanged();
 	}
 
 	//Container Activity must implement this interface
@@ -92,7 +92,7 @@ public class FeedFragment extends Fragment {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
-			LinguageChallengeStub stub = nowArrayAdapter.getItem(position);
+			LinguageChallengeStub stub = topicCardAdapter.getItem(position);
 			int challengeId = stub.getId();
 			String chalType = stub.getType();
 			
