@@ -2,4 +2,13 @@
 
 *.apk
 *.ap_
+.classpath
+
+.directory
+.project
+org.eclipse.jdt.core.prefs
+BuildConfig.java
+R.java
+bin/*
+
 YouTubeDeveloperKey.java
